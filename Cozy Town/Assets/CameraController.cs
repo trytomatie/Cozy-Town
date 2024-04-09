@@ -17,7 +17,6 @@ public class CameraController : MonoBehaviour
 
     private void Movement()
     {
-        print(GameManager.PlayerInputMap.Camera.Vertical.ReadValue<float>());
         float horizontal = GameManager.PlayerInputMap.Camera.Horizontal.ReadValue<float>();
         float vertical = GameManager.PlayerInputMap.Camera.Vertical.ReadValue<float>();
 

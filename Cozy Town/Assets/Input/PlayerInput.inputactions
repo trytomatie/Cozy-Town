@@ -136,6 +136,54 @@
                     "isPartOfComposite": true
                 }
             ]
+        },
+        {
+            "name": "Player",
+            "id": "55eb5e04-f479-40b7-825b-73f8e797719f",
+            "actions": [
+                {
+                    "name": "PlaceBuilding",
+                    "type": "Button",
+                    "id": "85e34797-1726-4631-bf26-fb6d94c740cb",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RotateBuilding",
+                    "type": "Button",
+                    "id": "308756ff-719e-4ce7-8189-10714ed579b3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "61fc1253-ede2-4de5-bb2a-9e2a4a70598e",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PlaceBuilding",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4ba755ac-becb-41cc-b9b8-48cc79b9933c",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateBuilding",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -11,11 +13,13 @@ public class BuildingManager : MonoBehaviour
     public LayerMask groundLayer;
     public LayerMask placeLayer;
 
+    public GroundBlockOrentationData[] groundBlockOrentationDataList;
+
     public Material canPlaceMaterial;
     public Material cantPlaceMaterial;
     public bool placeBuildingMode = false;
     private int selectedBuildingIndex = 0;
-    private Vector3 gridOffset = new Vector3(0.5f,0, 0.5f);
+    private Vector3 gridOffset = new Vector3(0f,0, 0f);
     // Singleton
     public static BuildingManager instance;
 
@@ -34,6 +38,7 @@ public class BuildingManager : MonoBehaviour
             Destroy(this);
         }
         SetBuildingIndicator(0);
+        PlaceBuildingMode = true;
     }
 
     private void FixedUpdate()
@@ -102,8 +107,9 @@ public class BuildingManager : MonoBehaviour
 
     public void PlaceBuildingIndicator(Vector3 pos)
     {
-        // Round Position to nearest 1
-        pos = new Vector3(Mathf.Round(pos.x), Mathf.Round(pos.y), Mathf.Round(pos.z));
+        // Round Position to nearest even Number
+        pos = new Vector3(Mathf.Round(pos.x / 2) * 2, Mathf.Round(pos.y/2 ) * 2, Mathf.Round(pos.z/2) * 2);
+
         buildingIndictaor.transform.position = pos + gridOffset;
         if (CanPlaceBuilding(pos + gridOffset))
         {
@@ -154,8 +160,9 @@ public class BuildingManager : MonoBehaviour
             {
                 //GameUI.instance.interfaceAnimator.SetFloat("Buildingmode", 1);
                 buildingIndictaor.SetActive(true);
-                //InputSystem.GetInputActionMapPlayer().IngameUI.RotateBuilding.performed += ctx => RotateBuilding();
-                //InputSystem.GetInputActionMapPlayer().IngameUI.PlaceBuilding.performed += ctx => PlaceBuilding();
+                print("Building Mode Activated");
+                GameManager.PlayerInputMap.Player.RotateBuilding.performed += ctx => RotateBuilding();
+                GameManager.PlayerInputMap.Player.PlaceBuilding.performed += ctx => PlaceBuilding();
                 Invoke("UnlockPlacementInput", 0.25f);
                 
             }
@@ -163,10 +170,40 @@ public class BuildingManager : MonoBehaviour
             {
                 //GameUI.instance.interfaceAnimator.SetFloat("Buildingmode", 0);
                 buildingIndictaor.SetActive(false);
-                //InputSystem.GetInputActionMapPlayer().IngameUI.RotateBuilding.performed -= ctx => RotateBuilding();
-                //InputSystem.GetInputActionMapPlayer().IngameUI.PlaceBuilding.performed -= ctx => PlaceBuilding();
+                GameManager.PlayerInputMap.Player.RotateBuilding.performed -= ctx => RotateBuilding();
+                GameManager.PlayerInputMap.Player.PlaceBuilding.performed -= ctx => PlaceBuilding();
                 lockPlaceInput = true;
             }
         }
     }
 }
+
+// Editor Script
+#if UNITY_EDITOR
+[CustomEditor(typeof(BuildingManager))]
+public class BuildingManagerEditor : Editor
+{
+    int selectedBuildingIndex = 0;
+    public override void OnInspectorGUI()
+    {
+        BuildingManager buildingManager = (BuildingManager)target;
+        // Draw Default Inspector
+        DrawDefaultInspector();
+        // Cycle through selectedBuildingIndex
+        selectedBuildingIndex = EditorGUILayout.IntField("Selected Building Index", selectedBuildingIndex);
+        if (GUILayout.Button("Set Building Indicator"))
+        {
+            buildingManager.SetBuildingIndicator(selectedBuildingIndex);
+        }
+
+        // Show Hint if not all Patterns are Assigned
+        foreach(Pattern pattern in Enum.GetValues(typeof(Pattern)))
+        {
+            if(buildingManager.groundBlockOrentationDataList.Where(x => x.assignedPattern == pattern).Count() == 0)
+            {
+                EditorGUILayout.HelpBox($"No Pattern assigned for {pattern}", MessageType.Warning);
+            }
+        }
+    }
+}   
+#endif

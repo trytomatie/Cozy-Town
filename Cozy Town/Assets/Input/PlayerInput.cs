@@ -159,6 +159,54 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 }
             ]
+        },
+        {
+            ""name"": ""Player"",
+            ""id"": ""55eb5e04-f479-40b7-825b-73f8e797719f"",
+            ""actions"": [
+                {
+                    ""name"": ""PlaceBuilding"",
+                    ""type"": ""Button"",
+                    ""id"": ""85e34797-1726-4631-bf26-fb6d94c740cb"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RotateBuilding"",
+                    ""type"": ""Button"",
+                    ""id"": ""308756ff-719e-4ce7-8189-10714ed579b3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""61fc1253-ede2-4de5-bb2a-9e2a4a70598e"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlaceBuilding"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4ba755ac-becb-41cc-b9b8-48cc79b9933c"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateBuilding"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -167,11 +215,16 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Camera = asset.FindActionMap("Camera", throwIfNotFound: true);
         m_Camera_Vertical = m_Camera.FindAction("Vertical", throwIfNotFound: true);
         m_Camera_Horizontal = m_Camera.FindAction("Horizontal", throwIfNotFound: true);
+        // Player
+        m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
+        m_Player_PlaceBuilding = m_Player.FindAction("PlaceBuilding", throwIfNotFound: true);
+        m_Player_RotateBuilding = m_Player.FindAction("RotateBuilding", throwIfNotFound: true);
     }
 
     ~@PlayerInput()
     {
         Debug.Assert(!m_Camera.enabled, "This will cause a leak and performance issues, PlayerInput.Camera.Disable() has not been called.");
+        Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, PlayerInput.Player.Disable() has not been called.");
     }
 
     public void Dispose()
@@ -283,9 +336,68 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         }
     }
     public CameraActions @Camera => new CameraActions(this);
+
+    // Player
+    private readonly InputActionMap m_Player;
+    private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
+    private readonly InputAction m_Player_PlaceBuilding;
+    private readonly InputAction m_Player_RotateBuilding;
+    public struct PlayerActions
+    {
+        private @PlayerInput m_Wrapper;
+        public PlayerActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @PlaceBuilding => m_Wrapper.m_Player_PlaceBuilding;
+        public InputAction @RotateBuilding => m_Wrapper.m_Player_RotateBuilding;
+        public InputActionMap Get() { return m_Wrapper.m_Player; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
+        public void AddCallbacks(IPlayerActions instance)
+        {
+            if (instance == null || m_Wrapper.m_PlayerActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PlayerActionsCallbackInterfaces.Add(instance);
+            @PlaceBuilding.started += instance.OnPlaceBuilding;
+            @PlaceBuilding.performed += instance.OnPlaceBuilding;
+            @PlaceBuilding.canceled += instance.OnPlaceBuilding;
+            @RotateBuilding.started += instance.OnRotateBuilding;
+            @RotateBuilding.performed += instance.OnRotateBuilding;
+            @RotateBuilding.canceled += instance.OnRotateBuilding;
+        }
+
+        private void UnregisterCallbacks(IPlayerActions instance)
+        {
+            @PlaceBuilding.started -= instance.OnPlaceBuilding;
+            @PlaceBuilding.performed -= instance.OnPlaceBuilding;
+            @PlaceBuilding.canceled -= instance.OnPlaceBuilding;
+            @RotateBuilding.started -= instance.OnRotateBuilding;
+            @RotateBuilding.performed -= instance.OnRotateBuilding;
+            @RotateBuilding.canceled -= instance.OnRotateBuilding;
+        }
+
+        public void RemoveCallbacks(IPlayerActions instance)
+        {
+            if (m_Wrapper.m_PlayerActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IPlayerActions instance)
+        {
+            foreach (var item in m_Wrapper.m_PlayerActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_PlayerActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public PlayerActions @Player => new PlayerActions(this);
     public interface ICameraActions
     {
         void OnVertical(InputAction.CallbackContext context);
         void OnHorizontal(InputAction.CallbackContext context);
+    }
+    public interface IPlayerActions
+    {
+        void OnPlaceBuilding(InputAction.CallbackContext context);
+        void OnRotateBuilding(InputAction.CallbackContext context);
     }
 }

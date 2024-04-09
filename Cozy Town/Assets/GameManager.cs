@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             playerInputMap = new PlayerInput();
+            playerInputMap.Enable();
         }
         else
         {

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ff2295845bcd684694c135ecb13772d, type: 3}
+  m_Name: LEFT_T
+  m_EditorClassIdentifier: 
+  assignedPattern: 19
+  mesh: {fileID: -404124219712806566, guid: 662aebe41097d6843ae8e8d849325d31, type: 3}
+  rotation: {x: 0, y: 90, z: 0}
