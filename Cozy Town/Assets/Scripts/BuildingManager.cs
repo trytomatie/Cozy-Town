@@ -89,7 +89,15 @@ public class BuildingManager : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit,20, groundLayer) /*&& hit.normal == Vector3.up*/)
         {
-            Vector3 position = ray.GetPoint(hit.distance-0.1f) - gridOffset;
+            print(hit.normal);
+            Vector3 position = hit.collider.transform.position + (hit.normal * 2);
+            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Water"))
+            {
+                position = hit.point + gridOffset;
+                PlaceBuildingIndicator(position);
+                return;
+            }
+
             PlaceBuildingIndicator(position);
         }
         else
@@ -134,7 +142,7 @@ public class BuildingManager : MonoBehaviour
 
     private bool CanPlaceBuilding(Vector3 pos)
     {
-        Collider[] colliders = Physics.OverlapBox(pos,new Vector3(0.45f,0.45f,0.45f), Quaternion.identity, placeLayer);
+        Collider[] colliders = Physics.OverlapBox(pos + new Vector3(0,0.5f,0),new Vector3(0.45f,0.45f,0.45f), Quaternion.identity, placeLayer);
         if (colliders.Length > 0)
         {
             return false;
