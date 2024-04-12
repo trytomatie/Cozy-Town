@@ -26,6 +26,7 @@ public class BuildingManager : MonoBehaviour
     // Flags
     private bool lockPlaceInput = true;
 
+    public GameObject cornerPrefab;
 
     private void Awake()
     {
@@ -86,9 +87,9 @@ public class BuildingManager : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit,20, groundLayer) && hit.normal == Vector3.up)
+        if (Physics.Raycast(ray, out hit,20, groundLayer) /*&& hit.normal == Vector3.up*/)
         {
-            Vector3 position = hit.point - gridOffset;
+            Vector3 position = ray.GetPoint(hit.distance-0.1f) - gridOffset;
             PlaceBuildingIndicator(position);
         }
         else

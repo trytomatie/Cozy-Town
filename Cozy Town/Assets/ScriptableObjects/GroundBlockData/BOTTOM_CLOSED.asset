@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: BOTTOM_CLOSED
   m_EditorClassIdentifier: 
   assignedPattern: 6
-  mesh: {fileID: -404124219712806566, guid: 662aebe41097d6843ae8e8d849325d31, type: 3}
+  mesh: {fileID: 3418600543846247733, guid: ef1ef4302e7fa3f49a2487309e0569c5, type: 3}
   rotation: {x: 0, y: 0, z: 0}
