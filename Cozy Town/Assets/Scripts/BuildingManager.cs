@@ -87,7 +87,7 @@ public class BuildingManager : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit,20, groundLayer) /*&& hit.normal == Vector3.up*/)
+        if (Physics.Raycast(ray, out hit,60, groundLayer) /*&& hit.normal == Vector3.up*/)
         {
             print(hit.normal);
             Vector3 position = hit.collider.transform.position + (hit.normal * 2);
