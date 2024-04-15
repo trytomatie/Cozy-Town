@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 
 
 public class GameManager : MonoBehaviour
@@ -30,4 +31,6 @@ public class GameManager : MonoBehaviour
             return instance.playerInputMap;
         }
     }
+
+
 }

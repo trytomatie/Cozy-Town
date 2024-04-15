@@ -39,6 +39,10 @@ public class BuildingManager : MonoBehaviour
             Destroy(this);
         }
         SetBuildingIndicator(0);
+
+    }
+    private void Start()
+    {
         PlaceBuildingMode = true;
     }
 
