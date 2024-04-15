@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -6,7 +7,7 @@ using UnityEngine.AI;
 public class GameManager : MonoBehaviour
 {
     private PlayerInput playerInputMap;
-
+    public NavMeshSurface navMeshSurface;
 
     // Singelton
     public static GameManager instance;
@@ -30,6 +31,11 @@ public class GameManager : MonoBehaviour
         {
             return instance.playerInputMap;
         }
+    }
+
+    public void BakeNavMeshData()
+    {
+        navMeshSurface.BuildNavMesh();
     }
 
 

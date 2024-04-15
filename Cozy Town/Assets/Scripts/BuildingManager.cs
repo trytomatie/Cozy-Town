@@ -115,6 +115,7 @@ public class BuildingManager : MonoBehaviour
         if(CanPlaceBuilding(buildingIndictaor.transform.position) && !lockPlaceInput)
         {
             Instantiate(buildingPrefabs[selectedBuildingIndex], buildingIndictaor.transform.position, buildingIndictaor.transform.rotation);
+            GameManager.instance.BakeNavMeshData();
         }
     }
 
