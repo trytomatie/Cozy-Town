@@ -13,6 +13,7 @@ public class BuildingObjectUIElement : MonoBehaviourUIHoverElement
         image.sprite = bo.sprite;
         description = bo.gameObject.name;
         index = i;
+        
     }
 
     public void SelectIndex()
@@ -23,6 +24,7 @@ public class BuildingObjectUIElement : MonoBehaviourUIHoverElement
             return;
         }
         BuildingManager.instance.SetBuildingIndicator(index);
+        BuildingManager.instance.PlaceBuildingMode = true;
     }
 
 }

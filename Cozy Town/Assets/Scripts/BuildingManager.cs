@@ -41,10 +41,6 @@ public class BuildingManager : MonoBehaviour
         SetBuildingIndicator(0);
 
     }
-    private void Start()
-    {
-        PlaceBuildingMode = true;
-    }
 
     private void FixedUpdate()
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 
-public class MonoBehaviourUIHoverElement : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class MonoBehaviourUIHoverElement : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerMoveHandler
 {
     public string description = "-";
 
@@ -13,9 +13,16 @@ public class MonoBehaviourUIHoverElement : MonoBehaviour, IPointerEnterHandler, 
         DescriptorUI.instance.SetDescriptor(description);
     }
 
+
+
     public void OnPointerExit(PointerEventData eventData)
     {
         DescriptorUI.instance.HideDescriptor();
+    }
+
+    public void OnPointerMove(PointerEventData eventData)
+    {
+        DescriptorUI.instance.transform.position = Input.mousePosition;
     }
 }
 

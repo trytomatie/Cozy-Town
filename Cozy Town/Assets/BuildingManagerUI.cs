@@ -1,9 +1,17 @@
+using Sirenix.OdinInspector;
+using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using System;
+using TMPro;
 
-public class BuildingManagerUI : MonoBehaviour
+public class BuildingManagerUI : SerializedMonoBehaviour
 {
     public GameObject buildingItem;
-    public Transform[] categories;
+    public GameObject buildingDrawer;
+    public TextMeshProUGUI buildingDrawerTitle;
+    [DictionaryDrawerSettings(KeyLabel = "Index", ValueLabel = "Categories")]
+    public Dictionary<int, CategoryInformation> categories;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -12,24 +20,23 @@ public class BuildingManagerUI : MonoBehaviour
 
     private void Setup()
     {
-
         foreach (var category in categories)
         {
-            foreach (Transform child in category)
+            foreach (Transform child in category.Value.transform)
             {
                 Destroy(child.gameObject);
             }
         }
-        foreach (var category in categories)
+        foreach (var category in categories.Values)
         {
-            category.gameObject.SetActive(false);
+            category.transform.gameObject.SetActive(false);
         }
-        categories[0].gameObject.SetActive(true);
+        categories[0].transform.gameObject.SetActive(true);
 
         int i = 0;
         foreach (GameObject bo in BuildingManager.instance.buildingPrefabs)
         {
-            GameObject go = Instantiate(buildingItem, categories[(int)bo.GetComponent<BuildingObject>().buildingType]);
+            GameObject go = Instantiate(buildingItem, categories[(int)bo.GetComponent<BuildingObject>().buildingType].transform);
             go.GetComponent<BuildingObjectUIElement>().Setup(bo.GetComponent<BuildingObject>(), i);
             i++;
         }
@@ -37,10 +44,25 @@ public class BuildingManagerUI : MonoBehaviour
 
     public void SetCategory(int i)
     {
-        foreach (var category in categories)
+        foreach (var category in categories.Values)
         {
-            category.gameObject.SetActive(false);
+            category.transform.gameObject.SetActive(false);
         }
-        categories[i].gameObject.SetActive(true);
+        categories[i].transform.gameObject.SetActive(true);
+        buildingDrawerTitle.text = categories[i].name;
+        buildingDrawer.SetActive(true);
     }
+
+    public void CloseDrawer()
+    {
+        buildingDrawer.SetActive(false);
+        BuildingManager.instance.PlaceBuildingMode = false;
+    }
+}
+
+[InlineProperty(LabelWidth = 90)]
+public struct CategoryInformation
+{
+    public string name;
+    public Transform transform;
 }
