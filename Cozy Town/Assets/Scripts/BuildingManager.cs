@@ -112,9 +112,10 @@ public class BuildingManager : MonoBehaviour
 
     public void PlaceBuilding()
     {
-        if(CanPlaceBuilding(buildingIndictaor.transform.position) && !lockPlaceInput)
+        if(CanPlaceBuilding(buildingIndictaor.transform.position) && !lockPlaceInput && buildingIndictaor.activeSelf)
         {
-            Instantiate(buildingPrefabs[selectedBuildingIndex], buildingIndictaor.transform.position, buildingIndictaor.transform.rotation);
+            GameObject go = Instantiate(buildingPrefabs[selectedBuildingIndex], buildingIndictaor.transform.position, buildingIndictaor.transform.rotation);
+            go.GetComponent<BuildingObject>().EnableComponents();
             GameManager.instance.BakeNavMeshData();
         }
     }
@@ -216,6 +217,15 @@ public class BuildingManagerEditor : Editor
             if(buildingManager.groundBlockOrentationDataList.Where(x => x.assignedPattern == pattern).Count() == 0)
             {
                 EditorGUILayout.HelpBox($"No Pattern assigned for {pattern}", MessageType.Warning);
+            }
+        }
+
+        // Show hint if a BuildingPrefab has no BuildingObject Component
+        for(int i = 0; i < buildingManager.buildingPrefabs.Length; i++)
+        {
+            if (buildingManager.buildingPrefabs[i].GetComponent<BuildingObject>() == null)
+            {
+                EditorGUILayout.HelpBox($"BuildingPrefab at Index {i} has no BuildingObject Component", MessageType.Warning);
             }
         }
     }

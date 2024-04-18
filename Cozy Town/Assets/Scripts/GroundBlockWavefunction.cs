@@ -5,6 +5,7 @@ using static UnityEngine.UI.GridLayoutGroup;
 public class GroundBlockWavefunction : MonoBehaviour
 {
     public Pattern debugPattern;
+    public bool ramp;
     public int debugDifference;
     public static Dictionary<Vector3Int, GroundBlockWavefunction> groundBlockMatrix = new Dictionary<Vector3Int, GroundBlockWavefunction>();
     public static Dictionary<Vector3Int, CornerFunction> cornerMatrix = new Dictionary<Vector3Int, CornerFunction>();
@@ -13,12 +14,24 @@ public class GroundBlockWavefunction : MonoBehaviour
     private void Start()
     {
         groundBlockMatrix.Add(new Vector3Int((int)transform.position.x, (int)transform.position.y, (int)transform.position.z), this);
-        UpdateBlock(true);
+        if(!ramp)
+        {
+            UpdateBlock(true);
+        }
+        else
+        {
+            UpdateSurroundingBlocks(new Vector3Int((int)transform.position.x, (int)transform.position.y, (int)transform.position.z));
+        }
+
     }
 
 
     public void UpdateBlock(bool mainUpdate)
     {
+        if(ramp)
+        {
+            return;
+        }
         Vector3Int myPosition = new Vector3Int((int)transform.position.x, (int)transform.position.y,(int)transform.position.z);
         int[] waveFunction = new int[9];
         for(int x = 0; x < 3; x++)
@@ -57,23 +70,28 @@ public class GroundBlockWavefunction : MonoBehaviour
             }
         }
         if(mainUpdate)
-        {        
-            // Update all block around this block
-            for(int x = -1; x < 2; x++)
+        {
+            UpdateSurroundingBlocks(myPosition);
+            CornerCheck();
+        }
+    }
+
+    private static void UpdateSurroundingBlocks(Vector3Int myPosition)
+    {
+        // Update all block around this block
+        for (int x = -1; x < 2; x++)
+        {
+            for (int y = -1; y < 2; y++)
             {
-                for(int y = -1; y < 2; y++)
+                if (x == 0 && y == 0)
                 {
-                    if(x == 0 && y == 0)
-                    {
-                        continue;
-                    }
-                    if(groundBlockMatrix.ContainsKey(new Vector3Int(myPosition.x + x*2, myPosition.y, myPosition.z + y*2)))
-                    {
-                        groundBlockMatrix[new Vector3Int(myPosition.x + x*2, myPosition.y, myPosition.z + y*2)].UpdateBlock(false);
-                    }
+                    continue;
+                }
+                if (groundBlockMatrix.ContainsKey(new Vector3Int(myPosition.x + x * 2, myPosition.y, myPosition.z + y * 2)))
+                {
+                    groundBlockMatrix[new Vector3Int(myPosition.x + x * 2, myPosition.y, myPosition.z + y * 2)].UpdateBlock(false);
                 }
             }
-            CornerCheck();
         }
     }
 
@@ -129,9 +147,14 @@ public class GroundBlockWavefunction : MonoBehaviour
             {
                 for (int y = 0; y < 3; y++)
                 {
-                    if (groundBlockMatrix.ContainsKey(new Vector3Int(pos.x + (x - 1) * 2, pos.y, pos.z + (y - 1) * 2)))
+                    Vector3Int vec = new Vector3Int(pos.x + (x - 1) * 2, pos.y, pos.z + (y - 1) * 2);
+                    if (groundBlockMatrix.ContainsKey(vec))
                     {
-                        waveFunction[x * 3 + y] = 1;
+                        if (!groundBlockMatrix[vec].ramp)
+                        {
+                            waveFunction[x * 3 + y] = 1;
+                        }
+
                     }
                     else
                     {
