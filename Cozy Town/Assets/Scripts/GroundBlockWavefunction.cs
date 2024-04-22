@@ -9,25 +9,39 @@ public class GroundBlockWavefunction : MonoBehaviour
     public bool ramp;
     public int debugDifference;
     public static Dictionary<Vector3Int, GroundBlockWavefunction> groundBlockMatrix = new Dictionary<Vector3Int, GroundBlockWavefunction>();
+    public static Dictionary<Vector3Int, GroundBlockWavefunction> fenceBlockMatrix = new Dictionary<Vector3Int, GroundBlockWavefunction>();
     public static Dictionary<Vector3Int, CornerFunction> cornerMatrix = new Dictionary<Vector3Int, CornerFunction>();
-    public enum BlockType { Ground, Ramp, Jetty }
+    public enum BlockType { Ground, Ramp, Jetty,Fence }
 
     private void Start()
     {
-        groundBlockMatrix.Add(new Vector3Int((int)transform.position.x, (int)transform.position.y, (int)transform.position.z), this);
+        Dictionary<Vector3Int, GroundBlockWavefunction> matrix = null;
+        switch (blockType)
+        {
+            case BlockType.Ground:
+                matrix = groundBlockMatrix;
+                break;
+            case BlockType.Ramp:
+                matrix = groundBlockMatrix;
+                break;
+            case BlockType.Fence:
+                matrix = fenceBlockMatrix;
+                break;
+        }
+        matrix.Add(new Vector3Int((int)transform.position.x, (int)transform.position.y, (int)transform.position.z), this);
         if(!ramp)
         {
-            UpdateBlock(true);
+            UpdateBlock(true, matrix);
         }
         else
         {
-            UpdateSurroundingBlocks(new Vector3Int((int)transform.position.x, (int)transform.position.y, (int)transform.position.z));
+            UpdateSurroundingBlocks(new Vector3Int((int)transform.position.x, (int)transform.position.y, (int)transform.position.z), matrix);
         }
 
     }
 
 
-    public void UpdateBlock(bool mainUpdate)
+    public void UpdateBlock(bool mainUpdate,Dictionary<Vector3Int,GroundBlockWavefunction> matrix)
     {
         if(ramp)
         {
@@ -39,7 +53,7 @@ public class GroundBlockWavefunction : MonoBehaviour
         {
             for(int y = 0; y < 3; y++)
             {
-                if(groundBlockMatrix.ContainsKey(new Vector3Int(myPosition.x + (x-1)*2, myPosition.y, myPosition.z + (y-1)*2)))
+                if(matrix.ContainsKey(new Vector3Int(myPosition.x + (x-1)*2, myPosition.y, myPosition.z + (y-1)*2)))
                 {
                     waveFunction[x*3+y] = 1;
                 }
@@ -64,6 +78,9 @@ public class GroundBlockWavefunction : MonoBehaviour
                 break;
             case BlockType.Jetty:
                 break;
+            case BlockType.Fence:
+                dataList = BuildingManager.instance.fenceBlockOrentationDataList;
+                break;
         }
         Pattern pattern = CheckWaveFunction(waveFunction, dataList);
         debugPattern = pattern;
@@ -72,7 +89,7 @@ public class GroundBlockWavefunction : MonoBehaviour
             Debug.Log(pattern);
         }
 
-        foreach(GroundBlockOrentationData data in BuildingManager.instance.groundBlockOrentationDataList)
+        foreach(GroundBlockOrentationData data in dataList)
         {
             if(data.assignedPattern == pattern)
             {
@@ -83,12 +100,12 @@ public class GroundBlockWavefunction : MonoBehaviour
         }
         if(mainUpdate)
         {
-            UpdateSurroundingBlocks(myPosition);
+            UpdateSurroundingBlocks(myPosition,matrix);
             CornerCheck();
         }
     }
 
-    private static void UpdateSurroundingBlocks(Vector3Int myPosition)
+    private static void UpdateSurroundingBlocks(Vector3Int myPosition, Dictionary<Vector3Int, GroundBlockWavefunction> matrix)
     {
         // Update all block around this block
         for (int x = -1; x < 2; x++)
@@ -99,9 +116,9 @@ public class GroundBlockWavefunction : MonoBehaviour
                 {
                     continue;
                 }
-                if (groundBlockMatrix.ContainsKey(new Vector3Int(myPosition.x + x * 2, myPosition.y, myPosition.z + y * 2)))
+                if (matrix.ContainsKey(new Vector3Int(myPosition.x + x * 2, myPosition.y, myPosition.z + y * 2)))
                 {
-                    groundBlockMatrix[new Vector3Int(myPosition.x + x * 2, myPosition.y, myPosition.z + y * 2)].UpdateBlock(false);
+                    matrix[new Vector3Int(myPosition.x + x * 2, myPosition.y, myPosition.z + y * 2)].UpdateBlock(false, matrix);
                 }
             }
         }

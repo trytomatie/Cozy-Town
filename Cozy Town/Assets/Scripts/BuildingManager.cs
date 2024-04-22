@@ -14,7 +14,7 @@ public class BuildingManager : MonoBehaviour
     public LayerMask placeLayer;
 
     public GroundBlockOrentationData[] groundBlockOrentationDataList;
-
+    public GroundBlockOrentationData[] fenceBlockOrentationDataList;
     public Material canPlaceMaterial;
     public Material cantPlaceMaterial;
     public bool placeBuildingMode = false;
@@ -27,6 +27,10 @@ public class BuildingManager : MonoBehaviour
     private bool lockPlaceInput = true;
 
     public GameObject cornerPrefab;
+
+    [Header("Fences")]
+    public GameObject fenceHorizontal;
+    public GameObject fenceEnd;
 
     private void Awake()
     {
