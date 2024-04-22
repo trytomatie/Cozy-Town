@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Cozy Town/Assets/Prefabs/Buildings/FencePillar.prefab.meta
 guid: 53bbfe8adf1832644b160b7fdd4b4161
+========
+guid: 55c8756e507bcb949a83bcd98124e225
+>>>>>>>> 899922fb9f833ced7420adde79e56e4d3809aa94:Cozy Town/Assets/Prefabs/Foliage/Tree_01.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 
