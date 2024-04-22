@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ff2295845bcd684694c135ecb13772d, type: 3}
-  m_Name: TOPLEFT_CORNER
+  m_Name: SOUTHNORTH_BRIDGE
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -32,7 +32,7 @@ MonoBehaviour:
       Data: 3|3
     - Name: 
       Entry: 3
-      Data: 0
+      Data: 8
     - Name: 
       Entry: 3
       Data: 0
@@ -41,7 +41,7 @@ MonoBehaviour:
       Data: 8
     - Name: 
       Entry: 3
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 3
       Data: 1
@@ -53,7 +53,7 @@ MonoBehaviour:
       Data: 8
     - Name: 
       Entry: 3
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 3
       Data: 8
@@ -63,6 +63,6 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  assignedPattern: 11
-  mesh: {fileID: -5326117860439731005, guid: 75a3557ae4d3a804a8748e17be41af94, type: 3}
-  rotation: {x: 0, y: 0, z: 0}
+  assignedPattern: 14
+  mesh: {fileID: 3418600543846247733, guid: ef1ef4302e7fa3f49a2487309e0569c5, type: 3}
+  rotation: {x: 0, y: 90, z: 0}

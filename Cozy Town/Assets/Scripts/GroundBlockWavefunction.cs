@@ -4,12 +4,13 @@ using static UnityEngine.UI.GridLayoutGroup;
 
 public class GroundBlockWavefunction : MonoBehaviour
 {
+    public BlockType blockType;
     public Pattern debugPattern;
     public bool ramp;
     public int debugDifference;
     public static Dictionary<Vector3Int, GroundBlockWavefunction> groundBlockMatrix = new Dictionary<Vector3Int, GroundBlockWavefunction>();
     public static Dictionary<Vector3Int, CornerFunction> cornerMatrix = new Dictionary<Vector3Int, CornerFunction>();
-
+    public enum BlockType { Ground, Ramp, Jetty }
 
     private void Start()
     {
@@ -53,7 +54,18 @@ public class GroundBlockWavefunction : MonoBehaviour
         //{
         //    Debug.Log($"{waveFunction[x]}{waveFunction[x+1]}{waveFunction[x+2]}") ;
         //}
-        Pattern pattern = CheckWaveFunction(waveFunction);
+        GroundBlockOrentationData[] dataList = null;
+        switch(blockType)
+        {
+            case BlockType.Ground:
+                dataList = BuildingManager.instance.groundBlockOrentationDataList;
+                break;
+            case BlockType.Ramp:
+                break;
+            case BlockType.Jetty:
+                break;
+        }
+        Pattern pattern = CheckWaveFunction(waveFunction, dataList);
         debugPattern = pattern;
         if (mainUpdate)
         {
@@ -257,50 +269,56 @@ public class GroundBlockWavefunction : MonoBehaviour
                                                        1, 1, 0,
                                                        0, 1, 0};
 
-    private static List<int[]> patterns = new List<int[]>
-        {
-            MIDDLE,
-            BOTTOM,
-            TOP,
-            LEFT,
-            RIGHT,
-            MIDDLE_CLOSED,
-            BOTTOM_CLOSED,
-            TOP_CLOSED,
-            LEFT_CLOSED,
-            RIGHT_CLOSED,
-            TOPRIGHT_CORNER,
-            TOPLEFT_CORNER,
-            BOTTOMRIGHT_CORNER,
-            BOTTOMLEFT_CORNER,
-            SOUTHNORTH_BRIDGE,
-            WESTEAST_BRIDGE,
-            CROSS,
-            BOTTOM_T,
-            TOP_T,
-            LEFT_T,
-            RIGHT_T
-        };
-    public Pattern CheckWaveFunction(int[] waveFunction)
+    //private static List<int[]> patterns = new List<int[]>
+    //    {
+    //        MIDDLE,
+    //        BOTTOM,
+    //        TOP,
+    //        LEFT,
+    //        RIGHT,
+    //        MIDDLE_CLOSED,
+    //        BOTTOM_CLOSED,
+    //        TOP_CLOSED,
+    //        LEFT_CLOSED,
+    //        RIGHT_CLOSED,
+    //        TOPRIGHT_CORNER,
+    //        TOPLEFT_CORNER,
+    //        BOTTOMRIGHT_CORNER,
+    //        BOTTOMLEFT_CORNER,
+    //        SOUTHNORTH_BRIDGE,
+    //        WESTEAST_BRIDGE,
+    //        CROSS,
+    //        BOTTOM_T,
+    //        TOP_T,
+    //        LEFT_T,
+    //        RIGHT_T
+    //    };
+    public Pattern CheckWaveFunction(int[] waveFunction,GroundBlockOrentationData[] dataList)
     {
         Pattern closestPattern = Pattern.MIDDLE;
         int bestDifference = 1000;
 
-        int i = 0;
-        foreach (int[] pattern in patterns)
+        foreach (GroundBlockOrentationData data in dataList)
         {
+            int[] pattern = new int[9];
+            for (int x = 0; x < 3; x++)
+            {
+                for (int y = 0; y < 3; y++)
+                {
+                    pattern[y * 3 + x] = data.CustomCellDrawing[x, y];
+                }
+            }
             int difference = CalculateDifference(waveFunction, pattern);
             if(difference < bestDifference)
             {
                 debugDifference = difference;
                 bestDifference = difference;
-                closestPattern = (Pattern)i;
+                closestPattern = data.assignedPattern;
                 if (bestDifference == 0)
                 {
-                    return (Pattern)i;
+                    return data.assignedPattern;
                 }
             }
-            i++;
         }
         return closestPattern;
     }

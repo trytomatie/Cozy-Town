@@ -82,7 +82,7 @@ public class Wander : State
 {
     private BunnyAI bunny;
     private Vector3 destination;
-    private float wanderRadius = 5f;
+    private float wanderRadius = 15f;
     private float enterTime = 0f;
 
     public Wander(BunnyAI pc)
