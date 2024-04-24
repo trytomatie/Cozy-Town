@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingType: 0
-  sprite: {fileID: 21300000, guid: 6938ae4a3e7949041a0fa2c235f580ae, type: 3}
+  sprite: {fileID: 21300000, guid: 43ee6a958883c8347a6930d75d8c4da1, type: 3}
   components:
   - {fileID: -3952596418681297676}
 --- !u!64 &-2531967207957851188

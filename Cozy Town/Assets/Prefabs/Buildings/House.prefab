@@ -341,7 +341,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingType: 1
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 48a9257de3d8c5041b420ecce898e8e9, type: 3}
+  components: []
 --- !u!1 &8674662441698435421
 GameObject:
   m_ObjectHideFlags: 0

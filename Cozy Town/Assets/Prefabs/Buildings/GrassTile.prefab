@@ -109,7 +109,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 741ae76b2466e4b4f9c861d9d724e5a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blockType: 0
   debugPattern: 0
+  ramp: 0
   debugDifference: 0
 --- !u!65 &6928040690035817935
 BoxCollider:
@@ -145,6 +147,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingType: 0
-  sprite: {fileID: 21300000, guid: 6938ae4a3e7949041a0fa2c235f580ae, type: 3}
+  sprite: {fileID: 21300000, guid: b85db67524baad649b7d96555ac6a05c, type: 3}
   components:
   - {fileID: 7721079265877151714}
