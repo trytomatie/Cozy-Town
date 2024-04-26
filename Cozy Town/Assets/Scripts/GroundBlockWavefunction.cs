@@ -92,10 +92,6 @@ public class GroundBlockWavefunction : MonoBehaviour
                 dataList = BuildingManager.instance.pathBlockOrientationDataList;
                 break;
         }
-        if(!mainUpdate)
-        {
-            print("Test");
-        }
         Pattern pattern = CheckWaveFunction(waveFunction, dataList);
         debugPattern = pattern;
 
