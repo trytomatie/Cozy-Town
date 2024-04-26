@@ -6,6 +6,7 @@ using NUnit.Framework.Constraints;
 [CreateAssetMenu(fileName = "GroundBlockOrentationData", menuName = "GroundBlockOrentationData", order = 1)]
 public class GroundBlockOrentationData : SerializedScriptableObject
 {
+    public BlockType blockType;
     [TableMatrix(HorizontalTitle = "Custom Cell Drawing", DrawElementMethod = "DrawColoredEnumElement", ResizableColumns = false, RowHeight = 16,SquareCells = true)]
     public int[,] CustomCellDrawing = new int[3,3];
 
@@ -43,7 +44,11 @@ public class GroundBlockOrentationData : SerializedScriptableObject
 
         return value;
     }
+
     public Pattern assignedPattern;
+    [HideIf("blockType", BlockType.Path)]
     public Mesh mesh;
+    [ShowIf("blockType", BlockType.Path)]
+    public Vector2 pathOffset;
     public Vector3 rotation;
 }

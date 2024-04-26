@@ -14,7 +14,7 @@ public class BuildingManager : MonoBehaviour
     public LayerMask placeLayer;
 
     public GroundBlockOrentationData[] groundBlockOrentationDataList;
-    public GroundBlockOrentationData[] fenceBlockOrentationDataList;
+    public GroundBlockOrentationData[] pathBlockOrientationDataList;
     public Material canPlaceMaterial;
     public Material cantPlaceMaterial;
     public bool placeBuildingMode = false;

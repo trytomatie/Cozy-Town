@@ -3560,16 +3560,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2162382076989140248, guid: 53bbfe8adf1832644b160b7fdd4b4161,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.777
-      objectReference: {fileID: 0}
-    - target: {fileID: 2162382076989140248, guid: 53bbfe8adf1832644b160b7fdd4b4161,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.892
-      objectReference: {fileID: 0}
     - target: {fileID: 2480932515306600911, guid: 53bbfe8adf1832644b160b7fdd4b4161,
         type: 3}
       propertyPath: m_Name
@@ -4277,7 +4267,7 @@ PrefabInstance:
     - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
       propertyPath: buildingPrefabs.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
@@ -4323,14 +4313,205 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
+      propertyPath: 'buildingPrefabs.Array.data[7]'
+      value: 
+      objectReference: {fileID: 8238580879299465040, guid: 1adfe405b7d54524fb0239c1ec767139,
+        type: 3}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
       propertyPath: fenceBlockOrentationDataList.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: pathBlockOrientationDataList.Array.size
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
       propertyPath: 'fenceBlockOrentationDataList.Array.data[0]'
       value: 
       objectReference: {fileID: 11400000, guid: 572363790e8af4c488d89f20499fc166,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'pathBlockOrientationDataList.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 80db22bfa80b98e4d9471ed0c3c20c58,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'pathBlockOrientationDataList.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 9279f290301651e40bf9e2f7e6fb5b6e,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'pathBlockOrientationDataList.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 598b4c7b4628d8a419d76a0da71820f6,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'pathBlockOrientationDataList.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 0cb1aa4281bf5fc45b352a964043455e,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'pathBlockOrientationDataList.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 40465639c54e6774096d7cc078a42509,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'pathBlockOrientationDataList.Array.data[5]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 60942726fef5ec34db2765d6eab4ce18,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'pathBlockOrientationDataList.Array.data[6]'
+      value: 
+      objectReference: {fileID: 11400000, guid: a1897fb28ddcb79408a7ade3c976b925,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'pathBlockOrientationDataList.Array.data[7]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 5fd673593f605c84496ac4c94971b367,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'pathBlockOrientationDataList.Array.data[8]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 3ee2803b5b4b3854689024bcdcb7d7e8,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'pathBlockOrientationDataList.Array.data[9]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 572363790e8af4c488d89f20499fc166,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'pathBlockOrientationDataList.Array.data[10]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 51c95c2022c89964f8f3278a409e8270,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'pathBlockOrientationDataList.Array.data[11]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 9394ab1dcd2e3754f92289d13a76c272,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'pathBlockOrientationDataList.Array.data[12]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 397ce82a19b4d6c4f8315643c46313c7,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'pathBlockOrientationDataList.Array.data[13]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 14a885afad702b7488f0e438f2e7c988,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'pathBlockOrientationDataList.Array.data[14]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 4887ceeed095eaa4889353d20be6c4cf,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'pathBlockOrientationDataList.Array.data[15]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 40b77d429503236419d2663f597fcf43,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'pathBlockOrientationDataList.Array.data[16]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 7d78416427a09284d98596daa91f8446,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'pathBlockOrientationDataList.Array.data[17]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 508ef9a6ed57af24fb74f2ddf4356bba,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'pathBlockOrientationDataList.Array.data[18]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 9c6966d1aecb8aa4b9ef02c33560ae03,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'pathBlockOrientationDataList.Array.data[19]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 6890ad02b811bd24b8da9b1570a0eb3f,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'pathBlockOrientationDataList.Array.data[20]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 2364567bb4eff82459daf7078e5ddb0e,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'pathBlockOrientationDataList.Array.data[21]'
+      value: 
+      objectReference: {fileID: 11400000, guid: d22cadae7957c264e95293200b80450e,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'pathBlockOrientationDataList.Array.data[22]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 85bf30acfed2f534c98d70325010da69,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'pathBlockOrientationDataList.Array.data[23]'
+      value: 
+      objectReference: {fileID: 11400000, guid: a5ba59c102934744997b263d3cfdeff6,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'pathBlockOrientationDataList.Array.data[24]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 1b6a8ac6392f1264c8811cd65128e503,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'pathBlockOrientationDataList.Array.data[25]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 964ab420f8edd444c8570fc9b6bf4c48,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'pathBlockOrientationDataList.Array.data[26]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 0eb8f9c1052f1f34a8291784a77d156a,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'pathBlockOrientationDataList.Array.data[27]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 14ae940ed7f641e45ad25bc843c60657,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'pathBlockOrientationDataList.Array.data[28]'
+      value: 
+      objectReference: {fileID: 11400000, guid: b4e06f9d576bbd149ac292bd239fdd58,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'pathBlockOrientationDataList.Array.data[29]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 724273fdeeb1d4544b8d131955aa7ae9,
         type: 2}
     - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}

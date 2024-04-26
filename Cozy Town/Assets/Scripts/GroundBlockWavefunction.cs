@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using static UnityEngine.UI.GridLayoutGroup;
 
 public class GroundBlockWavefunction : MonoBehaviour
@@ -9,9 +11,8 @@ public class GroundBlockWavefunction : MonoBehaviour
     public bool ramp;
     public int debugDifference;
     public static Dictionary<Vector3Int, GroundBlockWavefunction> groundBlockMatrix = new Dictionary<Vector3Int, GroundBlockWavefunction>();
-    public static Dictionary<Vector3Int, GroundBlockWavefunction> fenceBlockMatrix = new Dictionary<Vector3Int, GroundBlockWavefunction>();
+    public static Dictionary<Vector3Int, GroundBlockWavefunction> pathWayMatrix = new Dictionary<Vector3Int, GroundBlockWavefunction>();
     public static Dictionary<Vector3Int, CornerFunction> cornerMatrix = new Dictionary<Vector3Int, CornerFunction>();
-    public enum BlockType { Ground, Ramp, Jetty,Fence }
 
     private void Start()
     {
@@ -24,11 +25,20 @@ public class GroundBlockWavefunction : MonoBehaviour
             case BlockType.Ramp:
                 matrix = groundBlockMatrix;
                 break;
-            case BlockType.Fence:
-                matrix = fenceBlockMatrix;
+            case BlockType.Path:
+                matrix = pathWayMatrix;
                 break;
         }
-        matrix.Add(new Vector3Int((int)transform.position.x, (int)transform.position.y, (int)transform.position.z), this);
+        try
+        {
+            matrix.Add(new Vector3Int((int)transform.position.x, (int)transform.position.y, (int)transform.position.z), this);
+        }
+        catch(Exception e)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         if(!ramp)
         {
             UpdateBlock(true, matrix);
@@ -78,23 +88,33 @@ public class GroundBlockWavefunction : MonoBehaviour
                 break;
             case BlockType.Jetty:
                 break;
-            case BlockType.Fence:
-                dataList = BuildingManager.instance.fenceBlockOrentationDataList;
+            case BlockType.Path:
+                dataList = BuildingManager.instance.pathBlockOrientationDataList;
                 break;
+        }
+        if(!mainUpdate)
+        {
+            print("Test");
         }
         Pattern pattern = CheckWaveFunction(waveFunction, dataList);
         debugPattern = pattern;
-        if (mainUpdate)
-        {
-            Debug.Log(pattern);
-        }
 
         foreach(GroundBlockOrentationData data in dataList)
         {
             if(data.assignedPattern == pattern)
             {
-                GetComponent<MeshFilter>().mesh = data.mesh;
-                transform.rotation = Quaternion.Euler(data.rotation);
+                if(data.blockType == BlockType.Path)
+                {
+                    transform.rotation = Quaternion.Euler(data.rotation);
+                    GetComponent<DecalProjector>().uvBias = data.pathOffset;
+                    GetComponent<MeshRenderer>().enabled = false;
+                }
+                else
+                {
+                    GetComponent<MeshFilter>().mesh = data.mesh;
+                    transform.rotation = Quaternion.Euler(data.rotation);
+                }
+
                 break;
             }
         }
@@ -381,5 +401,5 @@ public enum Pattern
     LEFT_T = 19,
     RIGHT_T = 20
 }
-
+public enum BlockType { Ground, Ramp, Jetty, Path }
 

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ff2295845bcd684694c135ecb13772d, type: 3}
-  m_Name: MIDDLE
+  m_Name: BOTTOMRIGH_CORNER
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -32,16 +32,16 @@ MonoBehaviour:
       Data: 3|3
     - Name: 
       Entry: 3
-      Data: 0
+      Data: 8
     - Name: 
       Entry: 3
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 3
-      Data: 0
+      Data: 8
     - Name: 
       Entry: 3
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 3
       Data: 1
@@ -50,19 +50,21 @@ MonoBehaviour:
       Data: 0
     - Name: 
       Entry: 3
-      Data: 0
+      Data: 8
     - Name: 
       Entry: 3
       Data: 0
     - Name: 
       Entry: 3
-      Data: 0
+      Data: 8
     - Name: 
       Entry: 13
       Data: 
     - Name: 
       Entry: 8
       Data: 
-  assignedPattern: 0
-  mesh: {fileID: 2212009239438826721, guid: 0f60a94eaf5c9244893742b4d108fd60, type: 3}
-  rotation: {x: 0, y: 0, z: 0}
+  blockType: 3
+  assignedPattern: 12
+  mesh: {fileID: -5326117860439731005, guid: 75a3557ae4d3a804a8748e17be41af94, type: 3}
+  pathOffset: {x: 0, y: 0.5}
+  rotation: {x: 90, y: 0, z: -90}
