@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 public class BuildingManager : MonoBehaviour
 {
@@ -90,19 +91,27 @@ public class BuildingManager : MonoBehaviour
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-
+        BuildingObject bo = buildingPrefabs[selectedBuildingIndex].GetComponent<BuildingObject>();
         if (Physics.Raycast(ray, out hit,60, groundLayer) /*&& hit.normal == Vector3.up*/)
         {
             print(hit.normal);
-            Vector3 position = hit.collider.transform.position + (hit.normal * 2);
+            Vector3 position;
+            if (bo.gridSize == 2)
+            {
+                position = hit.collider.transform.position + (hit.normal * 2);
+            }
+            else
+            {
+                position = hit.point + gridOffset;
+            }
             if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Water"))
             {
                 position = hit.point + gridOffset;
-                PlaceBuildingIndicator(position);
+                PlaceBuildingIndicator(position, bo.gridSize);
                 return;
             }
 
-            PlaceBuildingIndicator(position);
+            PlaceBuildingIndicator(position, bo.gridSize);
         }
         else
         {
@@ -120,10 +129,10 @@ public class BuildingManager : MonoBehaviour
         }
     }
 
-    public void PlaceBuildingIndicator(Vector3 pos)
+    public void PlaceBuildingIndicator(Vector3 pos,float gridSize)
     {
         // Round Position to nearest even Number
-        pos = new Vector3(Mathf.Round(pos.x / 2) * 2, Mathf.Round(pos.y/2 ) * 2, Mathf.Round(pos.z/2) * 2);
+        pos = new Vector3(Mathf.Round(pos.x / gridSize) * gridSize, Mathf.Round(pos.y/ gridSize) * gridSize, Mathf.Round(pos.z/ gridSize) * gridSize);
 
         buildingIndictaor.transform.position = pos + gridOffset;
         if (CanPlaceBuilding(pos + gridOffset))
