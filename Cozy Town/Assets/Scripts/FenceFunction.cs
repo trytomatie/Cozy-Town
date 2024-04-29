@@ -24,23 +24,26 @@ public class FenceFunction : MonoBehaviour
     {
         Vector3Int[] directions = new Vector3Int[]
         {
-            new Vector3Int(0,0,2),
-            new Vector3Int(0,0,-2),
-            new Vector3Int(-2,0,0),
-            new Vector3Int(2,0,0)
+            new Vector3Int(0,0,1),
+            new Vector3Int(0,0,-1),
+            new Vector3Int(-1,0,0),
+            new Vector3Int(1,0,0)
         };
 
         foreach (var direction in directions)
         {
             Vector3Int newPos = pos + direction;
+
             if(fences.ContainsKey(newPos))
             {
                 Quaternion rotation = Quaternion.Euler(0, 90, 0);
-                if (direction == new Vector3Int(0,0,2) || direction == new Vector3Int(0,0,-2))
+                if (direction == new Vector3Int(0,0,1) || direction == new Vector3Int(0,0,-1))
                 {
                     rotation = Quaternion.identity;
                 }
-                GameObject connection = Instantiate(BuildingManager.instance.fenceHorizontal, direction / 2 + pos, rotation);
+                // Get middle point between newPos and pos
+                Vector3 connectionPos = (new Vector3(newPos.x, newPos.y, newPos.z) + new Vector3(pos.x, pos.y, pos.z)) / 2;
+                GameObject connection = Instantiate(BuildingManager.instance.fenceHorizontal, connectionPos, rotation);
                 connection.GetComponent<FenceConnection>().connections.Add(this);
                 connection.GetComponent<FenceConnection>().connections.Add(fences[newPos]);
             }
