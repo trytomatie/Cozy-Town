@@ -96,5 +96,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingType: 1
+  gridSize: 0.25
   sprite: {fileID: 0}
   components: []
