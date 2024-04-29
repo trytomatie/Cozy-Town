@@ -1226,7 +1226,7 @@ PrefabInstance:
     - target: {fileID: 4007162169616861270, guid: 2cc87c646c5e9ab4fb830c09b242f2f2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.13300003
+      value: 0.13300006
       objectReference: {fileID: 0}
     - target: {fileID: 4007162169616861270, guid: 2cc87c646c5e9ab4fb830c09b242f2f2,
         type: 3}
@@ -1236,7 +1236,7 @@ PrefabInstance:
     - target: {fileID: 4007162169616861270, guid: 2cc87c646c5e9ab4fb830c09b242f2f2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.533
+      value: -2.033
       objectReference: {fileID: 0}
     - target: {fileID: 4007162169616861270, guid: 2cc87c646c5e9ab4fb830c09b242f2f2,
         type: 3}
@@ -1306,6 +1306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingType: 1
+  gridSize: 2
   sprite: {fileID: 0}
   components: []
 --- !u!1001 &8322788401316108732
