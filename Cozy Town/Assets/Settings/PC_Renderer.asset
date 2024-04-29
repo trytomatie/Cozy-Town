@@ -98,10 +98,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Active: 0
   settings:
-    intensity: 0.6
+    intensity: 0.761
     kuwahara: 0
     passes: 1
-    radius: 2
+    radius: 6
     blur: 2
     sharpness: 8.1
     hardness: 1
@@ -111,7 +111,7 @@ MonoBehaviour:
     detailStrength: 1
     embossStrength: 5
     embossAngle: 0
-    waterColor: 0.5
+    waterColor: 0
     processDepth: 0
     depthCurve:
       serializedVersion: 2
@@ -183,8 +183,8 @@ MonoBehaviour:
     Intensity: 0.4
     DirectLightingStrength: 0.25
     Radius: 0.3
-    Samples: 1
-    BlurQuality: 1
+    Samples: 0
+    BlurQuality: 0
     Falloff: 100
     SampleCount: -1
   m_BlueNoise256Textures:
