@@ -157,10 +157,23 @@ public class BuildingManager : MonoBehaviour
 
     private bool CanPlaceBuilding(Vector3 pos)
     {
-        Collider[] colliders = Physics.OverlapBox(pos + new Vector3(0,0.5f,0),new Vector3(0.45f,0.45f,0.45f), Quaternion.identity, placeLayer);
-        if (colliders.Length > 0)
+        Collider[] colliders;
+        Collider col = buildingIndictaor.GetComponent<Collider>();
+        if(col != null)
         {
-            return false;
+            colliders = Physics.OverlapBox(pos + col.bounds.center, col.bounds.extents * 0.95f, Quaternion.identity, placeLayer);
+            if (colliders.Length > 0)
+            {
+                return false;
+            }
+        }
+        else
+        {
+            colliders = Physics.OverlapBox(pos + new Vector3(0, 0.5f, 0), new Vector3(0.45f, 0.45f, 0.45f), Quaternion.identity, placeLayer);
+            if (colliders.Length > 0)
+            {
+                return false;
+            }
         }
         return true;
     }
