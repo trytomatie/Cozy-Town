@@ -14,6 +14,8 @@ public class GroundBlockWavefunction : MonoBehaviour
     public static Dictionary<Vector3Int, GroundBlockWavefunction> pathWayMatrix = new Dictionary<Vector3Int, GroundBlockWavefunction>();
     public static Dictionary<Vector3Int, CornerFunction> cornerMatrix = new Dictionary<Vector3Int, CornerFunction>();
 
+    private MaterialPropertyBlock materialPropertyBlock;
+
     private void Start()
     {
         Dictionary<Vector3Int, GroundBlockWavefunction> matrix = null;
@@ -27,6 +29,7 @@ public class GroundBlockWavefunction : MonoBehaviour
                 break;
             case BlockType.Path:
                 matrix = pathWayMatrix;
+                materialPropertyBlock = new MaterialPropertyBlock();
                 break;
         }
         try
@@ -102,8 +105,14 @@ public class GroundBlockWavefunction : MonoBehaviour
                 if(data.blockType == BlockType.Path)
                 {
                     transform.rotation = Quaternion.Euler(data.rotation);
-                    GetComponent<DecalProjector>().uvBias = data.pathOffset;
+                    materialPropertyBlock.SetVector("_BaseMap_ST", new Vector4(0.25f, 0.25f, data.pathOffset.x, data.pathOffset.y));
+                    //GetComponent<DecalProjector>().uvBias = data.pathOffset;
                     GetComponent<MeshRenderer>().enabled = false;
+                    foreach(MeshRenderer mr in GetComponentsInChildren<MeshRenderer>())
+                    {
+                        print("SSSSSSSSSSSSSSSSSS");
+                        mr.SetPropertyBlock(materialPropertyBlock);
+                    }
                 }
                 else
                 {
