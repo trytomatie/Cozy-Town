@@ -96,12 +96,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4473ca3f180686849980f1ab4439aff1, type: 3}
   m_Name: OilPaint
   m_EditorClassIdentifier: 
-  m_Active: 0
+  m_Active: 1
   settings:
-    intensity: 0.761
+    intensity: 0.75
     kuwahara: 0
     passes: 1
-    radius: 6
+    radius: 2
     blur: 2
     sharpness: 8.1
     hardness: 1
@@ -111,7 +111,7 @@ MonoBehaviour:
     detailStrength: 1
     embossStrength: 5
     embossAngle: 0
-    waterColor: 0
+    waterColor: 0.5
     processDepth: 0
     depthCurve:
       serializedVersion: 2
