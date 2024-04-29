@@ -60,9 +60,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 662aebe41097d6843ae8e8d849325d31,
         type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 662aebe41097d6843ae8e8d849325d31,
+        type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: ba3494d51bbf29943912aef371efbbd4, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 662aebe41097d6843ae8e8d849325d31,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ee9a9b5725b80864cbba68163db0a9c0, type: 2}
     - target: {fileID: -5754084199372789682, guid: 662aebe41097d6843ae8e8d849325d31,
         type: 3}
       propertyPath: m_Mesh
@@ -110,6 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingType: 0
+  gridSize: 2
   sprite: {fileID: 21300000, guid: 43ee6a958883c8347a6930d75d8c4da1, type: 3}
   components:
   - {fileID: -3952596418681297676}

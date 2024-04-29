@@ -162,7 +162,7 @@ Material:
     - _ZWrite: 1
     - __NumberOfStacks: 17
     m_Colors:
-    - _Color: {r: 0.5838677, g: 0.754717, b: 0.4022784, a: 1}
+    - _Color: {r: 0.62752515, g: 0.7264151, b: 0.4762816, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GroundColor: {r: 0.95699996, g: 0.8818866, b: 0.69860995, a: 1}
     - _GroundGrassColor: {r: 0.09999997, g: 0.7, b: 0.09999997, a: 1}
