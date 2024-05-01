@@ -1,10 +1,12 @@
 using System.Collections.Generic;
+using UnityEditor.MemoryProfiler;
 using UnityEngine;
 using UnityEngine.Experimental.AI;
 
 public class FenceFunction : MonoBehaviour
 {
     public static Dictionary<Vector3Int, FenceFunction> fences = new Dictionary<Vector3Int, FenceFunction>();
+    public List<FenceConnection> connections = new List<FenceConnection>();
 
     public void Start()
     {
@@ -46,7 +48,24 @@ public class FenceFunction : MonoBehaviour
                 GameObject connection = Instantiate(BuildingManager.instance.fenceHorizontal, connectionPos, rotation);
                 connection.GetComponent<FenceConnection>().connections.Add(this);
                 connection.GetComponent<FenceConnection>().connections.Add(fences[newPos]);
+                connections.Add(connection.GetComponent<FenceConnection>());
+                fences[newPos].connections.Add(connection.GetComponent<FenceConnection>());
             }
         }
+    }
+
+    public void DeleteFencePost()
+    {
+        Vector3Int pos = new Vector3Int((int)transform.position.x, (int)transform.position.y, (int)transform.position.z);
+        foreach(var connection in connections)
+        {
+            if(connection != null)
+            {
+                connection.connections.Remove(this);
+                connection.CheckConnections();
+            }
+
+        }
+        fences.Remove(pos);
     }
 }

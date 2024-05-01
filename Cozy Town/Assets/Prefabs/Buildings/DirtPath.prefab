@@ -267,6 +267,24 @@ MonoBehaviour:
   sprite: {fileID: 0}
   components:
   - {fileID: 5043233841307453230}
+  deletionEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5043233841307453230}
+        m_TargetAssemblyTypeName: GroundBlockWavefunction, Assembly-CSharp
+        m_MethodName: RemoveBlock
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  canBePlacedOnSlope: 0
+  grounded: 1
+  groundedPoints: []
 --- !u!33 &73095871240643127
 MeshFilter:
   m_ObjectHideFlags: 0

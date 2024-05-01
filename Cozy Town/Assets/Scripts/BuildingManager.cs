@@ -18,8 +18,13 @@ public class BuildingManager : MonoBehaviour
     public GroundBlockOrentationData[] pathBlockOrientationDataList;
     public Material canPlaceMaterial;
     public Material cantPlaceMaterial;
+    public Material deleteMaterial;
     public bool placeBuildingMode = false;
     private int selectedBuildingIndex = 0;
+    private DeletionMode buildingDeletionMode = DeletionMode.None;
+    private GameObject deletionTarget;
+    private Material[] deletionTargetOriginalMaterialRef;
+
     private Vector3 gridOffset = new Vector3(0f,0, 0f);
     // Singleton
     public static BuildingManager instance;
@@ -32,6 +37,12 @@ public class BuildingManager : MonoBehaviour
     [Header("Fences")]
     public GameObject fenceHorizontal;
     public GameObject fenceEnd;
+
+    public enum DeletionMode
+    {
+        None,
+        Block,
+    }
 
     private void Awake()
     {
@@ -52,6 +63,10 @@ public class BuildingManager : MonoBehaviour
         if (PlaceBuildingMode)
         {
             GetWorldPositionPointer();
+        }
+        if(BuildingDeletionMode != DeletionMode.None)
+        {
+            GetDeletionTarget();
         }
     }
 
@@ -94,7 +109,6 @@ public class BuildingManager : MonoBehaviour
         BuildingObject bo = buildingPrefabs[selectedBuildingIndex].GetComponent<BuildingObject>();
         if (Physics.Raycast(ray, out hit,60, groundLayer) /*&& hit.normal == Vector3.up*/)
         {
-            print(hit.normal);
             Vector3 position;
             if (bo.gridSize == 2)
             {
@@ -119,14 +133,26 @@ public class BuildingManager : MonoBehaviour
         }
     }
 
-    public void PlaceBuilding()
+    public void PlaceOrRemoveBuilding()
     {
-        if(CanPlaceBuilding(buildingIndictaor.transform.position) && !lockPlaceInput && buildingIndictaor.activeSelf)
+        if(BuildingDeletionMode == DeletionMode.Block)
         {
-            GameObject go = Instantiate(buildingPrefabs[selectedBuildingIndex], buildingIndictaor.transform.position, buildingIndictaor.transform.rotation);
-            go.GetComponent<BuildingObject>().EnableComponents();
-            GameManager.instance.BakeNavMeshData();
+            if(DeletionTarget != null)
+            {
+                DeletionTarget.GetComponent<BuildingObject>().DeleteBuildingObject();
+                DeletionTarget = null;
+            }
         }
+        else
+        {
+            if (CanPlaceBuilding(buildingIndictaor.transform.position) && !lockPlaceInput && buildingIndictaor.activeSelf)
+            {
+                GameObject go = Instantiate(buildingPrefabs[selectedBuildingIndex], buildingIndictaor.transform.position, buildingIndictaor.transform.rotation);
+                go.GetComponent<BuildingObject>().EnableComponents();
+                GameManager.instance.BakeNavMeshData();
+            }
+        }
+
     }
 
     public void PlaceBuildingIndicator(Vector3 pos,float gridSize)
@@ -155,15 +181,40 @@ public class BuildingManager : MonoBehaviour
         }
     }
 
+    public void GetDeletionTarget()
+    {
+        buildingIndictaor.SetActive(false);
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 60) /*&& hit.normal == Vector3.up*/)
+        {
+            if(hit.collider.GetComponent<BuildingObject>() != null)
+            {
+                DeletionTarget = hit.collider.gameObject;
+            }
+        }
+        else
+        {
+
+        }
+    }
+
     private bool CanPlaceBuilding(Vector3 pos)
     {
         Collider[] colliders;
-        Collider col = buildingIndictaor.GetComponent<Collider>();
-        if(col != null)
+
+        BuildingObject bo = buildingPrefabs[selectedBuildingIndex].GetComponent<BuildingObject>();
+        BoxCollider col = bo.GetComponent<BoxCollider>();
+        if (col != null)
         {
-            colliders = Physics.OverlapBox(pos + col.bounds.center, col.bounds.extents * 0.95f, Quaternion.identity, placeLayer);
+            colliders = Physics.OverlapBox(pos + col.center, col.size / 2, Quaternion.identity, placeLayer);
             if (colliders.Length > 0)
             {
+                print("Colliding");
                 return false;
             }
         }
@@ -172,8 +223,44 @@ public class BuildingManager : MonoBehaviour
             colliders = Physics.OverlapBox(pos + new Vector3(0, 0.5f, 0), new Vector3(0.45f, 0.45f, 0.45f), Quaternion.identity, placeLayer);
             if (colliders.Length > 0)
             {
+                print("Colliding , wo hitbox?");
                 return false;
             }
+        }
+        if(bo.grounded)
+        {
+            RaycastHit hit;
+            Transform[] groundedPoints = buildingIndictaor.GetComponentInChildren<BuildingObject>().groundedPoints;
+            if (groundedPoints.Length == 0)
+            {
+                groundedPoints = new Transform[1] { buildingIndictaor.transform };
+            }
+            int i = 0;
+            foreach (Transform t in groundedPoints)
+            {
+                if (Physics.Raycast(t.position + new Vector3(0,0.1f,0), Vector3.down, out hit, 0.12f, groundLayer))
+                {
+                    if(hit.collider.gameObject.layer == LayerMask.NameToLayer("Water"))
+                    {
+                        return false;
+                    }
+                    if(!bo.canBePlacedOnSlope)
+                    {
+                        if (hit.normal != Vector3.up)
+                        {
+                            print("OnSlope");
+                            return false;
+                        }
+                    }
+                }
+                else
+                {
+                    print("NotGrounded");
+                    return false;
+                }
+                i++;
+            }
+
         }
         return true;
     }
@@ -195,11 +282,12 @@ public class BuildingManager : MonoBehaviour
             placeBuildingMode = value;
             if(value)
             {
+                BuildingDeletionMode = DeletionMode.None;
                 //GameUI.instance.interfaceAnimator.SetFloat("Buildingmode", 1);
                 buildingIndictaor.SetActive(true);
                 print("Building Mode Activated");
                 GameManager.PlayerInputMap.Player.RotateBuilding.performed += ctx => RotateBuilding();
-                GameManager.PlayerInputMap.Player.PlaceBuilding.performed += ctx => PlaceBuilding();
+                GameManager.PlayerInputMap.Player.PlaceBuilding.performed += ctx => PlaceOrRemoveBuilding();
                 Invoke("UnlockPlacementInput", 0.25f);
                 
             }
@@ -208,10 +296,70 @@ public class BuildingManager : MonoBehaviour
                 //GameUI.instance.interfaceAnimator.SetFloat("Buildingmode", 0);
                 buildingIndictaor.SetActive(false);
                 GameManager.PlayerInputMap.Player.RotateBuilding.performed -= ctx => RotateBuilding();
-                GameManager.PlayerInputMap.Player.PlaceBuilding.performed -= ctx => PlaceBuilding();
+                GameManager.PlayerInputMap.Player.PlaceBuilding.performed -= ctx => PlaceOrRemoveBuilding();
                 lockPlaceInput = true;
             }
         }
+    }
+
+    public void EnableDeletionMode()
+    {
+        BuildingDeletionMode = DeletionMode.Block;
+    }
+
+    public DeletionMode BuildingDeletionMode 
+    { 
+        get => buildingDeletionMode;
+        set 
+        {
+            if(value != DeletionMode.None)
+            {
+                GameManager.SetCursor(1);
+                PlaceBuildingMode = false;
+            }
+            else
+            {
+                GameManager.SetCursor(0);
+                DeletionTarget = null;
+            }
+            buildingDeletionMode = value;
+            
+        } 
+    }
+
+    public GameObject DeletionTarget { 
+        get => deletionTarget;
+        set
+        {
+            if(value != deletionTarget)
+            {
+                if(deletionTarget != null)
+                {
+                    MeshRenderer[] meshRenderers = deletionTarget.GetComponentsInChildren<MeshRenderer>();
+
+                    int i = 0;
+                    foreach (MeshRenderer mr in meshRenderers)
+                    {
+                        mr.material = deletionTargetOriginalMaterialRef[i];
+                        i++;
+                    }
+                }
+                if(value != null)
+                {
+                    MeshRenderer[] meshRenderers = value.GetComponentsInChildren<MeshRenderer>();
+                    deletionTargetOriginalMaterialRef = new Material[meshRenderers.Length];
+                    int i = 0;
+                    foreach (MeshRenderer mr in meshRenderers)
+                    {
+                        deletionTargetOriginalMaterialRef[i] = mr.material;
+                        mr.material = deleteMaterial;
+                        i++;
+                    }
+                }
+                deletionTarget = value;
+            }
+
+        } 
     }
 }
 

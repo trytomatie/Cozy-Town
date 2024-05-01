@@ -84,6 +84,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrassTile
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 662aebe41097d6843ae8e8d849325d31,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -161,3 +166,21 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: b85db67524baad649b7d96555ac6a05c, type: 3}
   components:
   - {fileID: 7721079265877151714}
+  deletionEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7721079265877151714}
+        m_TargetAssemblyTypeName: GroundBlockWavefunction, Assembly-CSharp
+        m_MethodName: RemoveBlock
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  canBePlacedOnSlope: 0
+  grounded: 0
+  groundedPoints: []

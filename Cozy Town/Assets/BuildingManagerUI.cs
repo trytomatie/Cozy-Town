@@ -12,9 +12,11 @@ public class BuildingManagerUI : SerializedMonoBehaviour
     public TextMeshProUGUI buildingDrawerTitle;
     [DictionaryDrawerSettings(KeyLabel = "Index", ValueLabel = "Categories")]
     public Dictionary<int, CategoryInformation> categories;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
         Setup();
     }
 
