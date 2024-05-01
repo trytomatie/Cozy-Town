@@ -59,8 +59,12 @@ public class FenceFunction : MonoBehaviour
         Vector3Int pos = new Vector3Int((int)transform.position.x, (int)transform.position.y, (int)transform.position.z);
         foreach(var connection in connections)
         {
-            connection.connections.Remove(this);
-            connection.CheckConnections();
+            if(connection != null)
+            {
+                connection.connections.Remove(this);
+                connection.CheckConnections();
+            }
+
         }
         fences.Remove(pos);
     }
