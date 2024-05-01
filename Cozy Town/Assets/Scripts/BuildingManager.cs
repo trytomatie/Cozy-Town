@@ -314,10 +314,12 @@ public class BuildingManager : MonoBehaviour
         {
             if(value != DeletionMode.None)
             {
+                GameManager.SetCursor(1);
                 PlaceBuildingMode = false;
             }
             else
             {
+                GameManager.SetCursor(0);
                 DeletionTarget = null;
             }
             buildingDeletionMode = value;
