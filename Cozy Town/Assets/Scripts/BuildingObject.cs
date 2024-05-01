@@ -6,6 +6,10 @@ public class BuildingObject : MonoBehaviour
     public float gridSize = 2;
     public Sprite sprite;
     public Behaviour[] components;
+    public bool canBePlacedOnSlope = false;
+    public bool grounded = true;
+
+    public Transform[] groundedPoints;
 
 
     public void EnableComponents()
@@ -15,6 +19,7 @@ public class BuildingObject : MonoBehaviour
             component.enabled = true;
         }
     }
+
 }
 
 public enum BuildingType

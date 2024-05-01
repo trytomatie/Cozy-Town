@@ -84,6 +84,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrassRamp
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 662aebe41097d6843ae8e8d849325d31,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -124,6 +129,9 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 43ee6a958883c8347a6930d75d8c4da1, type: 3}
   components:
   - {fileID: -3952596418681297676}
+  canBePlacedOnSlope: 0
+  grounded: 0
+  groundedPoints: []
 --- !u!64 &-2531967207957851188
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -143,9 +151,9 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: -7419960258644660238, guid: a355e131d8638d64f9a06fcc5400a3f0, type: 3}
+  m_Mesh: {fileID: -504923937583505497, guid: 32d0726cba1770a4485e675916a5b16b, type: 3}
 --- !u!114 &-3952596418681297676
 MonoBehaviour:
   m_ObjectHideFlags: 0

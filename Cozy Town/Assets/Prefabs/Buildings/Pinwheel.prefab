@@ -149,6 +149,9 @@ MonoBehaviour:
   gridSize: 0.25
   sprite: {fileID: 0}
   components: []
+  canBePlacedOnSlope: 0
+  grounded: 1
+  groundedPoints: []
 --- !u!65 &1325948200676712306
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -168,5 +171,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.28, y: 0.85, z: 0.61}
-  m_Center: {x: -0.03, y: 0.38, z: 0}
+  m_Size: {x: 0.28, y: 0.85, z: 0.36011994}
+  m_Center: {x: -0.03, y: 0.38, z: -5.062625e-16}
