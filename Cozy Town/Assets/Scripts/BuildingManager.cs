@@ -133,14 +133,26 @@ public class BuildingManager : MonoBehaviour
         }
     }
 
-    public void PlaceBuilding()
+    public void PlaceOrRemoveBuilding()
     {
-        if(CanPlaceBuilding(buildingIndictaor.transform.position) && !lockPlaceInput && buildingIndictaor.activeSelf)
+        if(BuildingDeletionMode == DeletionMode.Block)
         {
-            GameObject go = Instantiate(buildingPrefabs[selectedBuildingIndex], buildingIndictaor.transform.position, buildingIndictaor.transform.rotation);
-            go.GetComponent<BuildingObject>().EnableComponents();
-            GameManager.instance.BakeNavMeshData();
+            if(DeletionTarget != null)
+            {
+                DeletionTarget.GetComponent<BuildingObject>().DeleteBuildingObject();
+                DeletionTarget = null;
+            }
         }
+        else
+        {
+            if (CanPlaceBuilding(buildingIndictaor.transform.position) && !lockPlaceInput && buildingIndictaor.activeSelf)
+            {
+                GameObject go = Instantiate(buildingPrefabs[selectedBuildingIndex], buildingIndictaor.transform.position, buildingIndictaor.transform.rotation);
+                go.GetComponent<BuildingObject>().EnableComponents();
+                GameManager.instance.BakeNavMeshData();
+            }
+        }
+
     }
 
     public void PlaceBuildingIndicator(Vector3 pos,float gridSize)
@@ -178,7 +190,7 @@ public class BuildingManager : MonoBehaviour
         }
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 60, groundLayer) /*&& hit.normal == Vector3.up*/)
+        if (Physics.Raycast(ray, out hit, 60) /*&& hit.normal == Vector3.up*/)
         {
             if(hit.collider.GetComponent<BuildingObject>() != null)
             {
@@ -275,7 +287,7 @@ public class BuildingManager : MonoBehaviour
                 buildingIndictaor.SetActive(true);
                 print("Building Mode Activated");
                 GameManager.PlayerInputMap.Player.RotateBuilding.performed += ctx => RotateBuilding();
-                GameManager.PlayerInputMap.Player.PlaceBuilding.performed += ctx => PlaceBuilding();
+                GameManager.PlayerInputMap.Player.PlaceBuilding.performed += ctx => PlaceOrRemoveBuilding();
                 Invoke("UnlockPlacementInput", 0.25f);
                 
             }
@@ -284,7 +296,7 @@ public class BuildingManager : MonoBehaviour
                 //GameUI.instance.interfaceAnimator.SetFloat("Buildingmode", 0);
                 buildingIndictaor.SetActive(false);
                 GameManager.PlayerInputMap.Player.RotateBuilding.performed -= ctx => RotateBuilding();
-                GameManager.PlayerInputMap.Player.PlaceBuilding.performed -= ctx => PlaceBuilding();
+                GameManager.PlayerInputMap.Player.PlaceBuilding.performed -= ctx => PlaceOrRemoveBuilding();
                 lockPlaceInput = true;
             }
         }

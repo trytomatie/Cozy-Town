@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     private PlayerInput playerInputMap;
     public NavMeshSurface navMeshSurface;
 
+    public Texture2D defaultCursor;
+    public Texture2D destroyCursor;
+
     // Singelton
     public static GameManager instance;
 

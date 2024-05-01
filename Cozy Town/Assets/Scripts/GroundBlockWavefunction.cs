@@ -130,6 +130,28 @@ public class GroundBlockWavefunction : MonoBehaviour
         }
     }
 
+    public void RemoveBlock()
+    {
+        Vector3Int myPosition = new Vector3Int((int)transform.position.x, (int)transform.position.y, (int)transform.position.z);
+        switch(blockType)
+        {
+            case BlockType.Ground:
+                groundBlockMatrix.Remove(myPosition);
+                UpdateSurroundingBlocks(myPosition, groundBlockMatrix);
+                break;
+            case BlockType.Ramp:
+                groundBlockMatrix.Remove(myPosition);
+                break;
+            case BlockType.Jetty:
+                break;
+            case BlockType.Path:
+                pathWayMatrix.Remove(myPosition);
+                UpdateSurroundingBlocks(myPosition, pathWayMatrix);
+                break;
+        }
+
+    }
+
     private static void UpdateSurroundingBlocks(Vector3Int myPosition, Dictionary<Vector3Int, GroundBlockWavefunction> matrix)
     {
         // Update all block around this block
