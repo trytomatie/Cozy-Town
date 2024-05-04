@@ -4398,7 +4398,7 @@ PrefabInstance:
     - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
       propertyPath: buildingPrefabs.Array.size
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
@@ -4468,8 +4468,19 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
+      propertyPath: 'buildingPrefabs.Array.data[11]'
+      value: 
+      objectReference: {fileID: 1556989499156995393, guid: 0afe7bba9262b1444a8250b999cbaa66,
+        type: 3}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
       propertyPath: fenceBlockOrentationDataList.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: jettyBlockOrentationDataList.Array.size
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
@@ -4481,6 +4492,66 @@ PrefabInstance:
       propertyPath: 'fenceBlockOrentationDataList.Array.data[0]'
       value: 
       objectReference: {fileID: 11400000, guid: 572363790e8af4c488d89f20499fc166,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'jettyBlockOrentationDataList.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 7c5f05c33eb7c424eb56629f75e41674,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'jettyBlockOrentationDataList.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: a86fb3098d2567249a43a8bb827dfda5,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'jettyBlockOrentationDataList.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 924c9ae55725abb4c83fe3918d97a964,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'jettyBlockOrentationDataList.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: d7dce0260a7adff47902c3c97441e178,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'jettyBlockOrentationDataList.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: fa089d8971365f54c855f27796f95a3d,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'jettyBlockOrentationDataList.Array.data[5]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 659cc72eb70e0214ba0433ed6774eb27,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'jettyBlockOrentationDataList.Array.data[6]'
+      value: 
+      objectReference: {fileID: 11400000, guid: ae92c6433d097cc4bbe3e3c328080693,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'jettyBlockOrentationDataList.Array.data[7]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 2b52e9080b4a57441b6f9b7056009374,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'jettyBlockOrentationDataList.Array.data[8]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 2135e9ccad3532c44a2f1f9cb6d2e4c2,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'jettyBlockOrentationDataList.Array.data[9]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 4f76a354d612a60408affeb7737da6a5,
         type: 2}
     - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
@@ -4541,6 +4612,72 @@ PrefabInstance:
       propertyPath: 'pathBlockOrientationDataList.Array.data[9]'
       value: 
       objectReference: {fileID: 11400000, guid: 572363790e8af4c488d89f20499fc166,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'jettyBlockOrentationDataList.Array.data[10]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 4f62bcead2f68f64f9143e16bf2f817c,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'jettyBlockOrentationDataList.Array.data[11]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 513b184cf5113a5479395fd5c554ce50,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'jettyBlockOrentationDataList.Array.data[12]'
+      value: 
+      objectReference: {fileID: 11400000, guid: ce6729cfd88c25441a68e2e66f3b86ef,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'jettyBlockOrentationDataList.Array.data[13]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 2a94d15e5903d304c9987f0cbb21cd39,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'jettyBlockOrentationDataList.Array.data[14]'
+      value: 
+      objectReference: {fileID: 11400000, guid: c6b65f54a3db9794cbb3e8d8d69dbab2,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'jettyBlockOrentationDataList.Array.data[15]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 5ef418f2f9196974cbf786251d687357,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'jettyBlockOrentationDataList.Array.data[16]'
+      value: 
+      objectReference: {fileID: 11400000, guid: f758ac4405322064db50a42a9e48b591,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'jettyBlockOrentationDataList.Array.data[17]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 8dc1ce6395ec0b24fa3d539814d605bd,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'jettyBlockOrentationDataList.Array.data[18]'
+      value: 
+      objectReference: {fileID: 11400000, guid: c3d68c9fd85962644878df4839e6cbb8,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'jettyBlockOrentationDataList.Array.data[19]'
+      value: 
+      objectReference: {fileID: 11400000, guid: cab09b8f309e5c946a847b9c35a9b07e,
+        type: 2}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: 'jettyBlockOrentationDataList.Array.data[20]'
+      value: 
+      objectReference: {fileID: 11400000, guid: e2c5d84c5f6b5994c9b163875752cf91,
         type: 2}
     - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
