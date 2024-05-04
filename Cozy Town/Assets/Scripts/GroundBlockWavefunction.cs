@@ -12,6 +12,7 @@ public class GroundBlockWavefunction : MonoBehaviour
     public int debugDifference;
     public static Dictionary<Vector3Int, GroundBlockWavefunction> groundBlockMatrix = new Dictionary<Vector3Int, GroundBlockWavefunction>();
     public static Dictionary<Vector3Int, GroundBlockWavefunction> pathWayMatrix = new Dictionary<Vector3Int, GroundBlockWavefunction>();
+    public static Dictionary<Vector3Int, GroundBlockWavefunction> jettyBlockMatrix = new Dictionary<Vector3Int, GroundBlockWavefunction>();
     public static Dictionary<Vector3Int, CornerFunction> cornerMatrix = new Dictionary<Vector3Int, CornerFunction>();
 
     private MaterialPropertyBlock materialPropertyBlock;
@@ -26,6 +27,9 @@ public class GroundBlockWavefunction : MonoBehaviour
                 break;
             case BlockType.Ramp:
                 matrix = groundBlockMatrix;
+                break;
+            case BlockType.Jetty:
+                matrix = jettyBlockMatrix;
                 break;
             case BlockType.Path:
                 matrix = pathWayMatrix;
@@ -90,6 +94,7 @@ public class GroundBlockWavefunction : MonoBehaviour
             case BlockType.Ramp:
                 break;
             case BlockType.Jetty:
+                dataList = BuildingManager.instance.jettyBlockOrentationDataList;
                 break;
             case BlockType.Path:
                 dataList = BuildingManager.instance.pathBlockOrientationDataList;

@@ -1,7 +1,5 @@
 using UnityEngine;
 using UnityEngine.Events;
-using static TMPro.TMP_InputField;
-
 public class BuildingObject : MonoBehaviour
 {
     public BuildingType buildingType;
