@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor.MemoryProfiler;
 using UnityEngine;
 using UnityEngine.Experimental.AI;
@@ -6,8 +7,8 @@ using UnityEngine.Experimental.AI;
 public class FenceFunction : MonoBehaviour
 {
     public static Dictionary<Vector3Int, FenceFunction> fences = new Dictionary<Vector3Int, FenceFunction>();
-    public List<FenceConnection> connections = new List<FenceConnection>();
-
+    public Dictionary<FenceConnection, Vector3Int> connections = new Dictionary<FenceConnection,Vector3Int>();
+    public Dictionary<GameObject, Vector3Int> endPieces = new Dictionary<GameObject, Vector3Int>();
     public void Start()
     {
         Vector3Int pos = new Vector3Int((int)transform.position.x, (int)transform.position.y, (int)transform.position.z);
@@ -15,11 +16,61 @@ public class FenceFunction : MonoBehaviour
         {
             fences.Add(pos, this);
             CheckForFenceConntection(pos);
+            // Check Neighbouring fence posts
         }
         else
         {
             Destroy(gameObject);
         }
+    }
+
+    public void PlaceEndPiece()
+    {
+        foreach(var connection in connections)
+        {
+            if(!connections.Values.Contains(-connection.Value))
+            {
+                if(!endPieces.Keys.Contains(connection.Key.gameObject))
+                {
+                    float angle = ConvertDirectionToAngle(-connection.Value);
+                    GameObject go = Instantiate(BuildingManager.instance.fenceEnd, transform.position, Quaternion.Euler(0, angle, 0));
+                    endPieces.Add(go,-connection.Value);
+                }
+            }
+            else
+            {
+                if(endPieces.Values.Contains(-connection.Value))
+                {
+                    GameObject go = endPieces.FirstOrDefault(x => x.Value == -connection.Value).Key;
+                    Destroy(go);
+                    endPieces.Remove(go);
+                }
+            }
+        }
+    }
+
+    private static float ConvertDirectionToAngle(Vector3Int connection)
+    {
+        // Convert direction to angle
+        float angle = 0;
+        if (connection == new Vector3Int(0, 0, 1))
+        {
+            angle = 0;
+        }
+        else if (connection == new Vector3Int(0, 0, -1))
+        {
+            angle = 180;
+        }
+        else if (connection == new Vector3Int(-1, 0, 0))
+        {
+            angle = -90;
+        }
+        else if (connection == new Vector3Int(1, 0, 0))
+        {
+            angle = 90;
+        }
+
+        return angle;
     }
 
     private void CheckForFenceConntection(Vector3Int pos)
@@ -48,10 +99,12 @@ public class FenceFunction : MonoBehaviour
                 GameObject connection = Instantiate(BuildingManager.instance.fenceHorizontal, connectionPos, rotation);
                 connection.GetComponent<FenceConnection>().connections.Add(this);
                 connection.GetComponent<FenceConnection>().connections.Add(fences[newPos]);
-                connections.Add(connection.GetComponent<FenceConnection>());
-                fences[newPos].connections.Add(connection.GetComponent<FenceConnection>());
+                connections.Add(connection.GetComponent<FenceConnection>(),direction);
+                fences[newPos].connections.Add(connection.GetComponent<FenceConnection>(), -direction);
+                fences[newPos].PlaceEndPiece();
             }
         }
+        PlaceEndPiece();
     }
 
     public void DeleteFencePost()
@@ -59,10 +112,10 @@ public class FenceFunction : MonoBehaviour
         Vector3Int pos = new Vector3Int((int)transform.position.x, (int)transform.position.y, (int)transform.position.z);
         foreach(var connection in connections)
         {
-            if(connection != null)
+            if(connection.Key != null)
             {
-                connection.connections.Remove(this);
-                connection.CheckConnections();
+                connection.Key.connections.Remove(this);
+                connection.Key.CheckConnections();
             }
 
         }

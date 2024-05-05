@@ -4376,6 +4376,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
+      propertyPath: fenceEnd
+      value: 
+      objectReference: {fileID: 5775019536015395209, guid: a507bb01a86c949499371ae1cc90a1f5,
+        type: 3}
+    - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
       propertyPath: deleteMaterial
       value: 
       objectReference: {fileID: 2100000, guid: 5d90cb415e0868d408ae9051ef68dcab, type: 2}
