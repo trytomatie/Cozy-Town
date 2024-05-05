@@ -1,3 +1,4 @@
+using System.ComponentModel.Design.Serialization;
 using UnityEngine;
 using UnityEngine.Events;
 public class BuildingObject : MonoBehaviour
@@ -6,6 +7,7 @@ public class BuildingObject : MonoBehaviour
     public float gridSize = 2;
     public Sprite sprite;
     public Behaviour[] components;
+    public Component[] externalComponents;
     public UnityEvent deletionEvent;
     public bool canBePlacedOnSlope = false;
     public bool grounded = true;
@@ -19,6 +21,7 @@ public class BuildingObject : MonoBehaviour
         {
             component.enabled = true;
         }
+
     }
 
     public void DeleteBuildingObject()

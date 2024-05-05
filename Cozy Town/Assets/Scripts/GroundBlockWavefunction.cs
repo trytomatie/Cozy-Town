@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using static UnityEngine.UI.GridLayoutGroup;
@@ -112,12 +113,13 @@ public class GroundBlockWavefunction : MonoBehaviour
                     transform.rotation = Quaternion.Euler(data.rotation);
                     materialPropertyBlock.SetVector("_BaseMap_ST", new Vector4(0.25f, 0.25f, data.pathOffset.x, data.pathOffset.y));
                     //GetComponent<DecalProjector>().uvBias = data.pathOffset;
-                    GetComponent<MeshRenderer>().enabled = false;
-                    foreach(MeshRenderer mr in GetComponentsInChildren<MeshRenderer>())
+
+                    foreach(MeshRenderer mr in GetComponentsInChildren<MeshRenderer>(true))
                     {
-                        print("SSSSSSSSSSSSSSSSSS");
+                        mr.enabled = true;
                         mr.SetPropertyBlock(materialPropertyBlock);
                     }
+                    GetComponentsInChildren<MeshRenderer>().Where(x => x.gameObject.name == "Indicator").First().enabled = false;
                 }
                 else
                 {
