@@ -4955,10 +4955,30 @@ PrefabInstance:
       propertyPath: navMeshSurface
       value: 
       objectReference: {fileID: 26443478}
+    - target: {fileID: 5001468975253559213, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5001468975253559213, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 5213682827675862990, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
       propertyPath: m_SoftShadowQuality
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5228550990703055075, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5228550990703055075, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7881313749982664905, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
@@ -5398,6 +5418,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8074044049103978719, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
+      propertyPath: field of view
+      value: 50.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 8074044049103978719, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
       propertyPath: m_BackGroundColor.a
       value: 1
       objectReference: {fileID: 0}
@@ -5414,7 +5439,12 @@ PrefabInstance:
     - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
       propertyPath: groundLayer.m_Bits
-      value: 17
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: zoom_Fov.m_Curve.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
@@ -5425,6 +5455,36 @@ PrefabInstance:
         type: 3}
       propertyPath: zoomHeight.m_Curve.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: zoom_Fov.m_Curve.Array.data[0].time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: zoom_Fov.m_Curve.Array.data[1].time
+      value: 0.50333345
+      objectReference: {fileID: 0}
+    - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: zoom_Fov.m_Curve.Array.data[2].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: zoom_Fov.m_Curve.Array.data[0].value
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: zoom_Fov.m_Curve.Array.data[1].value
+      value: 50.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: zoom_Fov.m_Curve.Array.data[2].value
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
@@ -5478,6 +5538,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
+      propertyPath: zoom_Fov.m_Curve.Array.data[0].inSlope
+      value: 50.205288
+      objectReference: {fileID: 0}
+    - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: zoom_Fov.m_Curve.Array.data[1].inSlope
+      value: 34.89795
+      objectReference: {fileID: 0}
+    - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: zoom_Fov.m_Curve.Array.data[2].inSlope
+      value: 19.590609
+      objectReference: {fileID: 0}
+    - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: zoom_Fov.m_Curve.Array.data[0].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: zoom_Fov.m_Curve.Array.data[0].outSlope
+      value: 50.205288
+      objectReference: {fileID: 0}
+    - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: zoom_Fov.m_Curve.Array.data[1].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: zoom_Fov.m_Curve.Array.data[1].outSlope
+      value: 34.89795
+      objectReference: {fileID: 0}
+    - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: zoom_Fov.m_Curve.Array.data[2].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: zoom_Fov.m_Curve.Array.data[2].outSlope
+      value: 19.590609
+      objectReference: {fileID: 0}
+    - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
       propertyPath: zoomDegree.m_Curve.Array.data[0].inSlope
       value: 0.8296051
       objectReference: {fileID: 0}
@@ -5505,6 +5610,21 @@ PrefabInstance:
         type: 3}
       propertyPath: zoomHeight.m_Curve.Array.data[2].inSlope
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: zoom_Fov.m_Curve.Array.data[0].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: zoom_Fov.m_Curve.Array.data[1].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: zoom_Fov.m_Curve.Array.data[2].outWeight
+      value: 0.33333334
       objectReference: {fileID: 0}
     - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
@@ -5575,6 +5695,21 @@ PrefabInstance:
         type: 3}
       propertyPath: zoomHeight.m_Curve.Array.data[1].outWeight
       value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: zoom_Fov.m_Curve.Array.data[0].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: zoom_Fov.m_Curve.Array.data[1].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: zoom_Fov.m_Curve.Array.data[2].tangentMode
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
@@ -7505,6 +7640,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Radius
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 460390968902418650, guid: ee054e19c95343045a0cd323e15d5bed,
+        type: 3}
+      propertyPath: m_StoppingDistance
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 1199318274287822493, guid: ee054e19c95343045a0cd323e15d5bed,
         type: 3}
