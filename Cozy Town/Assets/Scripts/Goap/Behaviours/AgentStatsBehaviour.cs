@@ -9,10 +9,9 @@ using UnityEngine.AI;
 public class AgentStatsBehaviour : MonoBehaviour
 {
     [SerializeField] public float fun = 100; public float Fun{ get => fun; private set => fun = value; }
-    public float Energy { get; private set; }
+    public float energy = 100; public float Energy { get => energy; set => energy = value; }
     public bool HavingFun { get; set; }
     public bool Resting { get; set; }
-    public int DanceSpots { get => InteractionObject.interactionDictionary.Values.Where(e => e == InteractionType.DanceSpot).Count(); }
 
     private void Update()
     {

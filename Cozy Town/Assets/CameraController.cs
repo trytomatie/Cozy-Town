@@ -6,8 +6,7 @@ public class CameraController : MonoBehaviour
 {
     public float cameraSpeed = 1.0f;
     public CinemachineVirtualCamera virtualCamera;
-    public AnimationCurve zoomDegree;
-    public AnimationCurve zoomHeight;
+    public AnimationCurve zoom_Fov;
     public float zoomLevel = 0.5f;
 
     public LayerMask groundLayer;
@@ -56,8 +55,7 @@ public class CameraController : MonoBehaviour
     {           
         zoomLevel -= GameManager.PlayerInputMap.Camera.Zoom.ReadValue<Vector2>().y * 0.05f;
         zoomLevel = Mathf.Clamp(zoomLevel, 0, 1);
-        virtualCamera.transform.eulerAngles =  new Vector3(zoomDegree.Evaluate(zoomLevel), virtualCamera.transform.eulerAngles.y,virtualCamera.transform.eulerAngles.z);
-        virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.y = zoomHeight.Evaluate(zoomLevel);
+        virtualCamera.m_Lens.FieldOfView = zoom_Fov.Evaluate(zoomLevel);
     }
 
 

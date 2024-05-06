@@ -3,6 +3,7 @@ using CrashKonijn.Goap.Enums;
 using CrashKonijn.Goap.Interfaces;
 using System;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 
@@ -36,19 +37,24 @@ public class BunnyBrain : MonoBehaviour
 
     private void Update()
     {
-        if(stats.Fun < 75 && stats.DanceSpots > 0)
+        if(stats.Fun < 75 && InteractionCollection.Instance.Get<DanceSpot_InteractionObject>().Where(e => e.occupant == null).Count() > 0)
         {
             agentBehaviour.SetGoal<HaveFunGoal>(true);
+            return;
         }
-        else
+        if(stats.Energy < 20 && InteractionCollection.Instance.Get<RestingPlace_InteractionObject>().Where(e => e.occupant == null).Count() > 0)
         {
-            agentBehaviour.SetGoal<WanderGoal>(true);
+            agentBehaviour.SetGoal<RestoreEnergyGoal>(true);
+            return;
         }
+
+        agentBehaviour.SetGoal<WanderGoal>(false);
+
     }
 
     private void EventsOnNoActionFound(IGoalBase goal)
     {
-        agentBehaviour.SetGoal<WanderGoal>(true);
+        agentBehaviour.SetGoal<WanderGoal>(false);
     }
 
 }

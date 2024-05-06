@@ -19,7 +19,7 @@ public class DanceSpotSensor : LocalWorldSensorBase
 
     public override SenseValue Sense(IMonoAgent agent, IComponentReference references)
     {
-        return new SenseValue(InteractionObject.interactionDictionary.Values.Where(e => e == InteractionType.DanceSpot).Count());
+        return new SenseValue(InteractionCollection.Instance.Get<DanceSpot_InteractionObject>().Count());
     }
 
 

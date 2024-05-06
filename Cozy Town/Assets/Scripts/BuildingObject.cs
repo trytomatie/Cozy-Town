@@ -21,6 +21,10 @@ public class BuildingObject : MonoBehaviour
         {
             component.enabled = true;
         }
+        foreach(var component in externalComponents)
+        {
+            (component as Behaviour).enabled = true;
+        }
 
     }
 

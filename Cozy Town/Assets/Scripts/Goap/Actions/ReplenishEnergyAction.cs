@@ -5,7 +5,7 @@ using CrashKonijn.Goap.Interfaces;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class DanceAction : ActionBase<InteractionData>
+public class ReplenishEnergyAction : ActionBase<InteractionData>
 {
     public override void Created()
     {
@@ -38,12 +38,12 @@ public class DanceAction : ActionBase<InteractionData>
         {
             if (data.agentBehaviour.MoveState == AgentMoveState.InRange)
             {
-                data.Stats.HavingFun = true;
+                data.Stats.Resting = true;
                 data.Animator.SetInteger("Interaction", (int)data.interactionTarget.animationType);
                 agent.transform.position = data.Target.Position;
                 agent.transform.rotation = data.TargetTransform.Transform.rotation;
                 data.Stats.GetComponent<NavMeshAgent>().enabled = false;
-                data.Timer = Random.Range(15, 15);
+                data.Timer = Random.Range(5, 20);
                 data.ActionStarted = true;
             }
             return ActionRunState.Continue;
@@ -65,8 +65,8 @@ public class DanceAction : ActionBase<InteractionData>
     {
         data.Stats.GetComponent<NavMeshAgent>().enabled = true;
         data.Animator.SetInteger("Interaction", 0);
-        if (data.Stats.HavingFun) data.Stats.IncreaseFun(40);
-        data.Stats.HavingFun = false;
+        if(data.Stats.Resting) data.Stats.energy += 60;
+        data.Stats.Resting = false;
         if(data.interactionTarget != null) data.interactionTarget.occupant = null;
 
     }

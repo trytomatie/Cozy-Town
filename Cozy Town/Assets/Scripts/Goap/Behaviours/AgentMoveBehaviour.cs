@@ -1,5 +1,6 @@
 using CrashKonijn.Goap.Behaviours;
 using CrashKonijn.Goap.Interfaces;
+using JetBrains.Annotations;
 using System;
 using UnityEngine;
 using UnityEngine.AI;
@@ -14,6 +15,7 @@ public class AgentMoveBehaviour : MonoBehaviour
     private ITarget currentTarget;
     private Vector3 lastPosition;
     private static readonly int SPEED = Animator.StringToHash("Speed");
+    
      
     private void Awake()
     {

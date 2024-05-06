@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7598131971698830801}
   - component: {fileID: 3358454203405873245}
   - component: {fileID: 4223787941688906086}
-  - component: {fileID: 8618410494309118756}
+  - component: {fileID: 6828383759026418628}
   m_Layer: 0
   m_Name: Cube
   m_TagString: DanceSpot
@@ -28,13 +28,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 959632320995977410}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: 0.8660254, z: -0, w: 0.5}
   m_LocalPosition: {x: -0.27, y: 0, z: 0.361}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7419202917510051057}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 120, z: 0}
 --- !u!33 &7598131971698830801
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -50,7 +50,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 959632320995977410}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -105,23 +105,23 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8618410494309118756
+--- !u!114 &6828383759026418628
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 959632320995977410}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07c6340f2a4fc5e428bb13bc8724f8f1, type: 3}
+  m_Script: {fileID: 11500000, guid: ef20dbc8abb60a244aa74543f66eccb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionType: 1
+  animationType: 1
 --- !u!1 &5145774698694822716
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 1287396022502177520}
   - component: {fileID: 112322308592559591}
   - component: {fileID: 1467492212614596005}
-  - component: {fileID: 5871316591270034587}
+  - component: {fileID: 3441574785556486997}
   m_Layer: 0
   m_Name: Cube (3)
   m_TagString: DanceSpot
@@ -150,13 +150,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5145774698694822716}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0.9238796, z: -0, w: 0.38268343}
   m_LocalPosition: {x: 0.363, y: 0, z: 0.364}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7419202917510051057}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -135, z: 0}
 --- !u!33 &1287396022502177520
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -172,7 +172,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5145774698694822716}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -227,23 +227,23 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5871316591270034587
+--- !u!114 &3441574785556486997
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5145774698694822716}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07c6340f2a4fc5e428bb13bc8724f8f1, type: 3}
+  m_Script: {fileID: 11500000, guid: ef20dbc8abb60a244aa74543f66eccb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionType: 1
+  animationType: 1
 --- !u!1 &6210920262289728145
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: 2013192590693886139}
   - component: {fileID: 2342458992645780024}
   - component: {fileID: 7215956065704186304}
-  - component: {fileID: 8704769841404301347}
+  - component: {fileID: 764797963979360246}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: DanceSpot
@@ -272,13 +272,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6210920262289728145}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0.38268283, z: -0, w: 0.92387974}
   m_LocalPosition: {x: 0.363, y: 0, z: -0.329}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7419202917510051057}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -45, z: 0}
 --- !u!33 &2013192590693886139
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -294,7 +294,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6210920262289728145}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -349,23 +349,23 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8704769841404301347
+--- !u!114 &764797963979360246
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6210920262289728145}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07c6340f2a4fc5e428bb13bc8724f8f1, type: 3}
+  m_Script: {fileID: 11500000, guid: ef20dbc8abb60a244aa74543f66eccb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionType: 1
+  animationType: 1
 --- !u!1 &8154120565111827307
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,7 +378,7 @@ GameObject:
   - component: {fileID: 1079730013443220477}
   - component: {fileID: 8971189631956202537}
   - component: {fileID: 614083387726344432}
-  - component: {fileID: 7995832711870690365}
+  - component: {fileID: 7849382006282261808}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: DanceSpot
@@ -394,13 +394,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8154120565111827307}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: 0.5, z: -0, w: 0.86602545}
   m_LocalPosition: {x: -0.26999995, y: 0, z: -0.3293571}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7419202917510051057}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 60, z: 0}
 --- !u!33 &1079730013443220477
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -416,7 +416,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8154120565111827307}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -471,23 +471,23 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7995832711870690365
+--- !u!114 &7849382006282261808
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8154120565111827307}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07c6340f2a4fc5e428bb13bc8724f8f1, type: 3}
+  m_Script: {fileID: 11500000, guid: ef20dbc8abb60a244aa74543f66eccb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionType: 1
+  animationType: 1
 --- !u!1001 &7024758640637055770
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -609,7 +609,11 @@ MonoBehaviour:
   gridSize: 0.25
   sprite: {fileID: 0}
   components: []
-  externalComponents: []
+  externalComponents:
+  - {fileID: 6828383759026418628}
+  - {fileID: 7849382006282261808}
+  - {fileID: 764797963979360246}
+  - {fileID: 3441574785556486997}
   deletionEvent:
     m_PersistentCalls:
       m_Calls: []

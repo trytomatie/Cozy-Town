@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem.Android;
 
-public class FunSensor : LocalWorldSensorBase
+public class EnergySensor : LocalWorldSensorBase
 {
 
     public override void Created()
@@ -17,7 +17,7 @@ public class FunSensor : LocalWorldSensorBase
 
     public override SenseValue Sense(IMonoAgent agent, IComponentReference references)
     {
-        return new SenseValue(Mathf.CeilToInt(references.GetCachedComponent<AgentStatsBehaviour>().Fun));
+        return new SenseValue(Mathf.CeilToInt(references.GetCachedComponent<AgentStatsBehaviour>().Energy));
     }
 
 

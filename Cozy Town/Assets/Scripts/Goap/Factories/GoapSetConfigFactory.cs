@@ -30,6 +30,9 @@ public class GoapSetConfigFactory : GoapSetFactoryBase
 
         builder.AddGoal<HaveFunGoal>()
             .AddCondition<Fun>(Comparison.GreaterThanOrEqual, 75);
+
+        builder.AddGoal<RestoreEnergyGoal>()
+            .AddCondition<Energy>(Comparison.GreaterThanOrEqual, 50);
     }
 
     private void BuildActions(GoapSetBuilder builder)
@@ -43,8 +46,13 @@ public class GoapSetConfigFactory : GoapSetFactoryBase
         builder.AddAction<DanceAction>()
             .SetTarget<DanceTarget>()
             .AddEffect<Fun>(EffectType.Increase)
-            .AddCondition<DanceSpot>(Comparison.GreaterThanOrEqual, 1)
             .SetBaseCost(8)
+            .SetInRange(1);
+
+        builder.AddAction<ReplenishEnergyAction>()
+            .SetTarget<RestingTarget>()
+            .AddEffect<Energy>(EffectType.Increase)
+            .SetBaseCost(4)
             .SetInRange(1);
     }
 
@@ -61,5 +69,11 @@ public class GoapSetConfigFactory : GoapSetFactoryBase
 
         builder.AddWorldSensor<DanceSpotSensor>()
             .SetKey<DanceSpot>();
+
+        builder.AddWorldSensor<EnergySensor>()
+            .SetKey<Energy>();
+
+        builder.AddTargetSensor<RestingTargetSensor>()
+            .SetTarget<RestingTarget>();
     }
 }

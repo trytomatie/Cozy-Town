@@ -12,8 +12,6 @@ using UnityEngine.InputSystem.Android;
 public class DanceTargetSensor : LocalTargetSensorBase, IInjectable
 {
     public FunConfig_SO config;
-    private Collider[] colliders = new Collider[30];
-
     public override void Created()
     {
 
@@ -26,22 +24,11 @@ public class DanceTargetSensor : LocalTargetSensorBase, IInjectable
 
     public override ITarget Sense(IMonoAgent agent, IComponentReference references)
     {
-        int hits = Physics.OverlapSphereNonAlloc(agent.transform.position, config.sensorRadius, colliders, config.sensorMask);
-        if (hits > 0)
+        
+        InteractionObject io = InteractionCollection.Instance.Get<DanceSpot_InteractionObject>().OrderBy(x => Vector3.Distance(x.transform.position, agent.transform.position)).Where(e => e.occupant == null).FirstOrDefault();
+        if(io != null)
         {
-            for(int i = colliders.Length-1; i > hits; i--)
-            {
-                colliders[i] = null;
-            }
-            colliders = colliders.Where(e => e != null).OrderBy(e => Vector3.Distance(agent.transform.position,e.transform.position)).ToArray();
-            foreach(Collider col in colliders)
-            {
-                if (col == null) break;
-                if(col.gameObject.CompareTag("DanceSpot"))
-                {
-                    return new TransformTarget(col.transform);
-                }
-            }
+            return new TransformTarget(io.transform);
         }
         return null;
     }

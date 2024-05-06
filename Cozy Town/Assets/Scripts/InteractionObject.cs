@@ -1,36 +1,39 @@
-﻿using NUnit.Framework;
+﻿using CrashKonijn.Goap.Interfaces;
+using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
-public class InteractionObject : MonoBehaviour
+public class InteractionObject : MonoBehaviour, IInteractable
 {
-
-    public InteractionType interactionType;
-    public static Dictionary<InteractionObject, InteractionType> interactionDictionary = new Dictionary<InteractionObject, InteractionType>();
-
+    public AnimationType animationType = AnimationType.None;
+    public IMonoAgent occupant = null;
     private void OnEnable()
-    {
-        interactionDictionary.Add(this, interactionType);
+    { 
+        InteractionCollection.Instance.Interactables.Add(this);
     }
 
     private void OnDisable()
     {
-        interactionDictionary.Remove(this);
+        InteractionCollection.Instance.Interactables.Remove(this);
     }
 
-    // Update is called once per frame
-    void Update()
+    public virtual void Interact()
     {
 
     }
 }
 
-public enum InteractionType
+[SerializeField]
+public interface IInteractable
+{
+    void Interact();
+}
+
+public enum AnimationType
 {
     None,
-    DanceSpot,
-    Dialogue,
-    Quest
-};
+    Dance,
+    Sit
+}
