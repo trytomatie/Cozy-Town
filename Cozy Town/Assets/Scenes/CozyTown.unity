@@ -2887,6 +2887,7 @@ GameObject:
   - component: {fileID: 789686099}
   - component: {fileID: 789686098}
   - component: {fileID: 789686097}
+  - component: {fileID: 789686100}
   m_Layer: 0
   m_Name: GoapConfig
   m_TagString: Untagged
@@ -2906,7 +2907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19925b6b65787cf439172e5e095b51fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  configInitializer: {fileID: 0}
+  configInitializer: {fileID: 789686100}
   setConfigFactories: []
   goapSetConfigFactories:
   - {fileID: 789686098}
@@ -2937,6 +2938,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1530671505}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &789686100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789686096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f7aa648210ec224ca0df11b42df90f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  funConfig: {fileID: 11400000, guid: de129c456162d194888a730ff1b6cf2c, type: 2}
 --- !u!1 &793612607
 GameObject:
   m_ObjectHideFlags: 0
@@ -12871,6 +12885,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BunnyNPC
       objectReference: {fileID: 0}
+    - target: {fileID: 4131796912923608011, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12941,6 +12960,7 @@ GameObject:
   - component: {fileID: 8967709079121460305}
   - component: {fileID: 8967709079121460304}
   - component: {fileID: 8967709079121460303}
+  - component: {fileID: 8967709079121460309}
   m_Layer: 0
   m_Name: BunnyGOAPNPC
   m_TagString: Untagged
@@ -13059,6 +13079,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goapSetBehaviour: {fileID: 0}
   <DistanceMultiplier>k__BackingField: 1
+--- !u!114 &8967709079121460309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6963475939968907358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2148866f1c63994ca9322dbc749fe08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &9014114187815076204 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3239094473866418980, guid: 1971d036cf9853b4c8bb53f3a0ed815b,

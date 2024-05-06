@@ -7,10 +7,13 @@ using System;
 using UnityEditor.Build.Content;
 using UnityEngine;
 
+[RequireComponent(typeof(DependencyInjector))]
 public class GoapSetConfigFactory : GoapSetFactoryBase
 {
+    private DependencyInjector DependencyInjector { get; set; }
     public override IGoapSetConfig Create()
     {
+        DependencyInjector = GetComponent<DependencyInjector>();
         GoapSetBuilder builder = new GoapSetBuilder("BunnySet");
 
         BuildGoals(builder);
@@ -24,6 +27,9 @@ public class GoapSetConfigFactory : GoapSetFactoryBase
     {
         builder.AddGoal<WanderGoal>()
             .AddCondition<IsWandering>(Comparison.GreaterThanOrEqual, 1);
+
+        builder.AddGoal<HaveFunGoal>()
+            .AddCondition<Fun>(Comparison.GreaterThanOrEqual, 75);
     }
 
     private void BuildActions(GoapSetBuilder builder)
@@ -33,11 +39,27 @@ public class GoapSetConfigFactory : GoapSetFactoryBase
            .AddEffect<IsWandering>(EffectType.Increase)
            .SetBaseCost(5)
            .SetInRange(20);
+
+        builder.AddAction<DanceAction>()
+            .SetTarget<DanceTarget>()
+            .AddEffect<Fun>(EffectType.Increase)
+            .AddCondition<DanceSpot>(Comparison.GreaterThanOrEqual, 1)
+            .SetBaseCost(8)
+            .SetInRange(1);
     }
 
     private void BuildSensors(GoapSetBuilder builder)
     {
         builder.AddTargetSensor<WanderTargetSensor>()
             .SetTarget<WanderTarget>();
+
+        builder.AddTargetSensor<DanceTargetSensor>()
+            .SetTarget<DanceTarget>();
+
+        builder.AddWorldSensor<FunSensor>()
+            .SetKey<Fun>();
+
+        builder.AddWorldSensor<DanceSpotSensor>()
+            .SetKey<DanceSpot>();
     }
 }
