@@ -5474,7 +5474,7 @@ PrefabInstance:
     - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
       propertyPath: zoom_Fov.m_Curve.Array.data[0].value
-      value: 25
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
@@ -5539,17 +5539,17 @@ PrefabInstance:
     - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
       propertyPath: zoom_Fov.m_Curve.Array.data[0].inSlope
-      value: 50.205288
+      value: 76.0331
       objectReference: {fileID: 0}
     - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
       propertyPath: zoom_Fov.m_Curve.Array.data[1].inSlope
-      value: 34.89795
+      value: 47.81185
       objectReference: {fileID: 0}
     - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
       propertyPath: zoom_Fov.m_Curve.Array.data[2].inSlope
-      value: 19.590609
+      value: 1.6692657
       objectReference: {fileID: 0}
     - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
@@ -5559,7 +5559,7 @@ PrefabInstance:
     - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
       propertyPath: zoom_Fov.m_Curve.Array.data[0].outSlope
-      value: 50.205288
+      value: 76.0331
       objectReference: {fileID: 0}
     - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
@@ -5569,17 +5569,17 @@ PrefabInstance:
     - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
       propertyPath: zoom_Fov.m_Curve.Array.data[1].outSlope
-      value: 34.89795
+      value: 47.81185
       objectReference: {fileID: 0}
     - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
       propertyPath: zoom_Fov.m_Curve.Array.data[2].inWeight
-      value: 0.33333334
+      value: 0.55704707
       objectReference: {fileID: 0}
     - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
       propertyPath: zoom_Fov.m_Curve.Array.data[2].outSlope
-      value: 19.590609
+      value: 1.6692657
       objectReference: {fileID: 0}
     - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
@@ -5709,7 +5709,7 @@ PrefabInstance:
     - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
       propertyPath: zoom_Fov.m_Curve.Array.data[2].tangentMode
-      value: 34
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8268653092240205081, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
@@ -7636,16 +7636,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 460390968902418650, guid: ee054e19c95343045a0cd323e15d5bed,
-        type: 3}
-      propertyPath: m_Radius
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 460390968902418650, guid: ee054e19c95343045a0cd323e15d5bed,
-        type: 3}
-      propertyPath: m_StoppingDistance
-      value: 0.9
-      objectReference: {fileID: 0}
     - target: {fileID: 1199318274287822493, guid: ee054e19c95343045a0cd323e15d5bed,
         type: 3}
       propertyPath: goapRunnerBehaviour

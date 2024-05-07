@@ -42,7 +42,7 @@ public class AgentMoveBehaviour : MonoBehaviour
     {
         if (navMeshAgent.velocity.sqrMagnitude > Mathf.Epsilon)
         {
-            transform.rotation = Quaternion.LookRotation(navMeshAgent.velocity.normalized);
+            transform.rotation = new Quaternion(transform.rotation.x,Quaternion.LookRotation(navMeshAgent.velocity.normalized).y,transform.rotation.z,transform.rotation.w);
         }
     }
 
