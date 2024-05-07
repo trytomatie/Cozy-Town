@@ -39,7 +39,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3219902355697218703}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48c69138e75d6f840abbe4f2402b98f2, type: 3}
   m_Name: 
@@ -84,7 +84,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6392503229879822020}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48c69138e75d6f840abbe4f2402b98f2, type: 3}
   m_Name: 
@@ -207,7 +207,9 @@ MonoBehaviour:
   gridSize: 0.25
   sprite: {fileID: 0}
   components: []
-  externalComponents: []
+  externalComponents:
+  - {fileID: 292887966022666812}
+  - {fileID: 6600221342665744358}
   deletionEvent:
     m_PersistentCalls:
       m_Calls: []

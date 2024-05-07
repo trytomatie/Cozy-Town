@@ -21,7 +21,6 @@ public class AgentMoveBehaviour : MonoBehaviour
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         agentBehaviour = GetComponent<AgentBehaviour>();
-        navMeshAgent.updateRotation = false;
     }
 
     private void Update()
@@ -42,7 +41,7 @@ public class AgentMoveBehaviour : MonoBehaviour
     {
         if (navMeshAgent.velocity.sqrMagnitude > Mathf.Epsilon)
         {
-            transform.rotation = new Quaternion(transform.rotation.x,Quaternion.LookRotation(navMeshAgent.velocity.normalized).y,transform.rotation.z,transform.rotation.w);
+            //transform.rotation = new Quaternion(transform.rotation.x,Quaternion.LookRotation(navMeshAgent.velocity.normalized).y,transform.rotation.z,transform.rotation.w);
         }
     }
 

@@ -13,6 +13,11 @@ public class AgentStatsBehaviour : MonoBehaviour
     public bool HavingFun { get; set; }
     public bool Resting { get; set; }
 
+    private void Start()
+    {
+        Fun = UnityEngine.Random.Range(25,100);
+        Energy = UnityEngine.Random.Range(25, 100);
+    }
     private void Update()
     {
         if(!HavingFun) Fun -= Time.deltaTime; ;
