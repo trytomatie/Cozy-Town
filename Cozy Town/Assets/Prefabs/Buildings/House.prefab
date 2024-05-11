@@ -170,7 +170,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8386207564685458533}
-  m_Mesh: {fileID: 6113912581363944171, guid: b342e504301ebd14192a372917b1a974, type: 3}
+  m_Mesh: {fileID: 4887216478360415443, guid: b342e504301ebd14192a372917b1a974, type: 3}
 --- !u!23 &180771293143703330
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -194,7 +194,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 1fb83df78c9c49242a8855fcda4905b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -232,6 +232,10 @@ MonoBehaviour:
   gridSize: 0.25
   sprite: {fileID: 21300000, guid: 48a9257de3d8c5041b420ecce898e8e9, type: 3}
   components: []
+  externalComponents: []
+  deletionEvent:
+    m_PersistentCalls:
+      m_Calls: []
   canBePlacedOnSlope: 0
   grounded: 1
   groundedPoints:
