@@ -13,10 +13,13 @@ public class AgentStatsBehaviour : MonoBehaviour
     public bool HavingFun { get; set; }
     public bool Resting { get; set; }
 
+    public float social = 100; public float Social { get => social; set => social = value; }
+
     private void Start()
     {
         Fun = UnityEngine.Random.Range(25,100);
         Energy = UnityEngine.Random.Range(25, 100);
+        Social = UnityEngine.Random.Range(25, 100);
     }
     private void Update()
     {
