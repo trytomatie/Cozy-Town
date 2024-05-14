@@ -268,7 +268,7 @@ public class BuildingManager : MonoBehaviour
 
     public void RotateBuilding()
     {
-        buildingIndictaor.transform.Rotate(Vector3.up, 90);
+        buildingIndictaor.transform.Rotate(Vector3.up, 45);
     }
 
     private void UnlockPlacementInput()
