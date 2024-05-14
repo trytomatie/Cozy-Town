@@ -3,8 +3,6 @@ using CrashKonijn.Goap.Classes.Builders;
 using CrashKonijn.Goap.Configs.Interfaces;
 using CrashKonijn.Goap.Enums;
 using CrashKonijn.Goap.Resolver;
-using System;
-using UnityEditor.Build.Content;
 using UnityEngine;
 
 [RequireComponent(typeof(DependencyInjector))]

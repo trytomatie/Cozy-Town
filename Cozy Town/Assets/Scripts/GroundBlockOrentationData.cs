@@ -9,7 +9,7 @@ public class GroundBlockOrentationData : SerializedScriptableObject
     public BlockType blockType;
     [TableMatrix(HorizontalTitle = "Custom Cell Drawing", DrawElementMethod = "DrawColoredEnumElement", ResizableColumns = false, RowHeight = 16,SquareCells = true)]
     public int[,] CustomCellDrawing = new int[3,3];
-
+#if UNITY_EDITOR
     private static int DrawColoredEnumElement(Rect rect, int value)
     {
         if (Event.current.type == EventType.MouseDown && rect.Contains(Event.current.mousePosition))
@@ -44,7 +44,7 @@ public class GroundBlockOrentationData : SerializedScriptableObject
 
         return value;
     }
-
+#endif
     public Pattern assignedPattern;
     [HideIf("blockType", BlockType.Path)]
     public Mesh mesh;

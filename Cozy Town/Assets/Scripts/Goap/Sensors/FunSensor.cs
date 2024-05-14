@@ -1,11 +1,7 @@
 using CrashKonijn.Goap.Classes;
 using CrashKonijn.Goap.Interfaces;
 using CrashKonijn.Goap.Sensors;
-using NUnit.Framework;
-using System;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.InputSystem.Android;
 
 public class FunSensor : LocalWorldSensorBase
 {
