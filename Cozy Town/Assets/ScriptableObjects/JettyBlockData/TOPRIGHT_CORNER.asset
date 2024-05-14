@@ -65,6 +65,6 @@ MonoBehaviour:
       Data: 
   blockType: 0
   assignedPattern: 10
-  mesh: {fileID: -7443282079901127910, guid: 642ebc0cbfe4b12448657bba90f3800d, type: 3}
+  mesh: {fileID: 8205155745513519100, guid: a0c4d9491545cf549b3f4f10ac76b7f6, type: 3}
   pathOffset: {x: 0, y: 0}
   rotation: {x: 0, y: 0, z: 0}
