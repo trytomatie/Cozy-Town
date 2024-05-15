@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Active: 1
   settings:
-    intensity: 0.75
+    intensity: 0.6
     kuwahara: 0
     passes: 1
     radius: 2
