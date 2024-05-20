@@ -140,8 +140,10 @@ public class BuildingManager : MonoBehaviour
         {
             if(DeletionTarget != null)
             {
+                SoundManager.PlaySound(1, DeletionTarget.transform.position);
                 DeletionTarget.GetComponent<BuildingObject>().DeleteBuildingObject();
                 DeletionTarget = null;
+                
             }
         }
         else
@@ -151,6 +153,7 @@ public class BuildingManager : MonoBehaviour
                 GameObject go = Instantiate(buildingPrefabs[selectedBuildingIndex], buildingIndictaor.transform.position, buildingIndictaor.transform.rotation);
                 go.GetComponent<BuildingObject>().EnableComponents();
                 GameManager.instance.BakeNavMeshData();
+                SoundManager.PlaySound(0, go.transform.position);
             }
         }
 
