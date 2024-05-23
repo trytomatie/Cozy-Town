@@ -129,6 +129,7 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 43ee6a958883c8347a6930d75d8c4da1, type: 3}
   components:
   - {fileID: -3952596418681297676}
+  externalComponents: []
   deletionEvent:
     m_PersistentCalls:
       m_Calls:

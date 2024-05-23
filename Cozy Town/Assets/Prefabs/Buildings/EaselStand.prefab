@@ -107,7 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingType: 1
   gridSize: 0.25
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: d10684f8fbb9472429d9d94f889c9b3b, type: 3}
   components: []
   externalComponents: []
   deletionEvent:

@@ -147,8 +147,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingType: 1
   gridSize: 0.25
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 4b4e5429f56e13f44ba22f8b8593733d, type: 3}
   components: []
+  externalComponents: []
+  deletionEvent:
+    m_PersistentCalls:
+      m_Calls: []
   canBePlacedOnSlope: 0
   grounded: 1
   groundedPoints: []

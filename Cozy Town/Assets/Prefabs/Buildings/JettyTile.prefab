@@ -163,7 +163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingType: 0
   gridSize: 2
-  sprite: {fileID: 21300000, guid: b85db67524baad649b7d96555ac6a05c, type: 3}
+  sprite: {fileID: 21300000, guid: 139000e870e0a9144bcec6a40dafad93, type: 3}
   components:
   - {fileID: 7721079265877151714}
   externalComponents: []
