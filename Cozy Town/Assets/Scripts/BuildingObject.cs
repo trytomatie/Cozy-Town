@@ -33,6 +33,7 @@ public class BuildingObject : MonoBehaviour
     {
         deletionEvent.Invoke();
         Destroy(gameObject);
+        GameManager.instance.BakeNavMeshData();
     }
 
 }

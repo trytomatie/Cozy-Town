@@ -54,7 +54,17 @@ public class GameManager : MonoBehaviour
     public void BakeNavMeshData()
     {
         navMeshSurface.BuildNavMesh();
+    }
 
+    public void BakeNavMeshDataNextFrame()
+    {
+        StartCoroutine(BakeNavMeshDataNextFrameCoroutine());
+    }
+
+    private IEnumerator BakeNavMeshDataNextFrameCoroutine()
+    {
+        yield return new WaitForEndOfFrame();
+        navMeshSurface.BuildNavMesh();
     }
 
 
