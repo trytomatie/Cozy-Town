@@ -152,10 +152,10 @@ public class BuildingManager : MonoBehaviour
             {
                 GameObject go = Instantiate(buildingPrefabs[selectedBuildingIndex], buildingIndictaor.transform.position, buildingIndictaor.transform.rotation);
                 go.GetComponent<BuildingObject>().EnableComponents();
-                GameManager.instance.BakeNavMeshData();
                 SoundManager.PlaySound(0, go.transform.position);
             }
         }
+        GameManager.instance.BakeNavMeshData();
 
     }
 
