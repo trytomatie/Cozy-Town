@@ -145,6 +145,7 @@ public class GroundBlockWavefunction : MonoBehaviour
             case BlockType.Ground:
                 groundBlockMatrix.Remove(myPosition);
                 UpdateSurroundingBlocks(myPosition, groundBlockMatrix);
+                CornerCheck();
                 break;
             case BlockType.Ramp:
                 groundBlockMatrix.Remove(myPosition);
