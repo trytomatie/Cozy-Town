@@ -26,6 +26,14 @@ public class AgentMoveBehaviour : MonoBehaviour
     private void Update()
     {
         animator.SetFloat(SPEED, navMeshAgent.velocity.magnitude);
+        // Snap to navmesh if not on navmesh
+        if (!Grounded && currentTarget != null)
+        {
+            navMeshAgent.enabled = false;
+            transform.position = currentTarget.Position;
+            navMeshAgent.enabled = true;
+            currentTarget = null;
+        }
         if (currentTarget != null)
         {
             return;
@@ -34,6 +42,7 @@ public class AgentMoveBehaviour : MonoBehaviour
         {
             lastPosition = currentTarget.Position;
             navMeshAgent.SetDestination(currentTarget.Position);
+
         }
     }
 
@@ -76,5 +85,13 @@ public class AgentMoveBehaviour : MonoBehaviour
     private void EventsOnTargetInRange(ITarget target)
     {
         currentTarget = target;
+    }
+
+    public bool Grounded
+    {
+        get
+        {
+            return NavMesh.SamplePosition(transform.position, out NavMeshHit hit, 1.3f, NavMesh.AllAreas);
+        }
     }
 }

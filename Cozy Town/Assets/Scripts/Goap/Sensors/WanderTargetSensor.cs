@@ -31,7 +31,7 @@ public class WanderTargetSensor : LocalTargetSensorBase
         {
             Vector2 rnd = UnityEngine.Random.insideUnitCircle * 10;
             Vector3 pos = agent.transform.position + new Vector3(rnd.x, 0, rnd.y);
-            if(NavMesh.SamplePosition(pos, out NavMeshHit hit, 10, NavMesh.AllAreas))
+            if(NavMesh.SamplePosition(pos, out NavMeshHit hit, 300, NavMesh.AllAreas))
             {
                 return hit.position;
             }
