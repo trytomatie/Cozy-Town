@@ -43,9 +43,9 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 2
-  m_Color: {r: 1, g: 0.40945286, b: 0, a: 1}
-  m_Intensity: 1.2
-  m_Range: 0.15
+  m_Color: {r: 1, g: 0.6564373, b: 0.4198113, a: 1}
+  m_Intensity: 0.25
+  m_Range: 0.45
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -89,8 +89,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 7.267628e+31, y: 1.1258685e+24, z: 1.1302034e+24,
-    w: 0.000875181}
+  m_BoundingSphereOverride: {x: 3.0526e-41, y: 2.524355e-29, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
@@ -238,7 +237,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 3
+      scalar: 4
       minScalar: 2
       maxCurve:
         serializedVersion: 2
@@ -992,7 +991,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 15
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -1439,25 +1438,25 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 0.67512566, b: 0.11792451, a: 0}
-        key1: {r: 1, g: 0.37897205, b: 0.06619523, a: 1}
-        key2: {r: 1, g: 0.04306501, b: 0.0075221844, a: 0}
-        key3: {r: 1, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
+        key0: {r: 1, g: 1, b: 1, a: 0}
+        key1: {r: 1, g: 0.67512566, b: 0.11792451, a: 1}
+        key2: {r: 1, g: 0.57146, b: 0.2783019, a: 0}
+        key3: {r: 1, g: 0.19479452, b: 0.16509432, a: 0}
+        key4: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 0}
+        key5: {r: 1, g: 1, b: 1, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 26407
-        ctime1: 31226
-        ctime2: 36623
-        ctime3: 46260
-        ctime4: 0
-        ctime5: 0
+        ctime0: 193
+        ctime1: 6939
+        ctime2: 13878
+        ctime3: 32575
+        ctime4: 44525
+        ctime5: 65535
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 31804
-        atime2: 65342
+        atime1: 3470
+        atime2: 51272
         atime3: 65342
         atime4: 0
         atime5: 0
@@ -1465,7 +1464,7 @@ ParticleSystem:
         atime7: 0
         m_Mode: 0
         m_ColorSpace: 0
-        m_NumColorKeys: 3
+        m_NumColorKeys: 6
         m_NumAlphaKeys: 3
       minGradient:
         serializedVersion: 2
@@ -3951,7 +3950,7 @@ ParticleSystem:
       emitProbability: 1
   LightsModule:
     enabled: 1
-    ratio: 0.5
+    ratio: 0.1
     light: {fileID: 1985032312082069328}
     randomDistribution: 1
     color: 1
@@ -4013,7 +4012,7 @@ ParticleSystem:
     intensityCurve:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.5
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -5118,8 +5117,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.7804383, y: 0.39071125, z: 0.80046123}
-  m_Center: {x: 0.014058962, y: 0.17198154, z: 0.02028671}
+  m_Size: {x: 0.7804383, y: 1.6134654, z: 0.80046123}
+  m_Center: {x: 0.014058948, y: 0.78335863, z: 0.02028671}
 --- !u!1001 &1766190039510124020
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5206,10 +5205,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1421000696640133683}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 068d5f91b0e038547a99ccc39acddd61,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1281333278779189321}
   m_SourcePrefab: {fileID: 100100000, guid: 068d5f91b0e038547a99ccc39acddd61, type: 3}
 --- !u!1 &1460201651244152997 stripped
 GameObject:
@@ -5240,27 +5235,6 @@ MonoBehaviour:
   canBePlacedOnSlope: 0
   grounded: 1
   groundedPoints: []
---- !u!65 &1281333278779189321
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1460201651244152997}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.7804383, y: 0.39071125, z: 0.80046123}
-  m_Center: {x: 0.014058962, y: 0.17198154, z: 0.02028671}
 --- !u!4 &2236174683075043871 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 068d5f91b0e038547a99ccc39acddd61,
