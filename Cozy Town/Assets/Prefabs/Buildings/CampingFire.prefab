@@ -89,7 +89,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 3.0526e-41, y: 2.524355e-29, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 1.7935e-41, y: 0, z: 2.7105054e-20, w: 9.1846e-40}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
@@ -786,7 +786,7 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 0.27
+    angle: 15
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -872,7 +872,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.16
+      value: 0.02
       mode: 0
       spread: 0
       speed:
@@ -1440,23 +1440,23 @@ ParticleSystem:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 0}
         key1: {r: 1, g: 0.67512566, b: 0.11792451, a: 1}
-        key2: {r: 1, g: 0.57146, b: 0.2783019, a: 0}
+        key2: {r: 1, g: 0.4998206, b: 0.15566039, a: 0}
         key3: {r: 1, g: 0.19479452, b: 0.16509432, a: 0}
-        key4: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 0}
+        key4: {r: 0.14150941, g: 0.13149695, b: 0.13149695, a: 0}
         key5: {r: 1, g: 1, b: 1, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 193
-        ctime1: 6939
-        ctime2: 13878
+        ctime1: 8288
+        ctime2: 20046
         ctime3: 32575
-        ctime4: 44525
+        ctime4: 41827
         ctime5: 65535
         ctime6: 0
         ctime7: 0
         atime0: 0
         atime1: 3470
-        atime2: 51272
+        atime2: 60716
         atime3: 65342
         atime4: 0
         atime5: 0
