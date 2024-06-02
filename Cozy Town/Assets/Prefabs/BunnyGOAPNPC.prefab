@@ -5058,10 +5058,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a80f3233a779a444af258e6711cb3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightFoot: {fileID: 0}
-  leftFoot: {fileID: 0}
-  rightFootoffset: 0.05
-  leftFootoffset: 0.05
+  rightFoot: {fileID: 3732995823154932055}
+  leftFoot: {fileID: 5822968420484544140}
+  rightFootoffset: 0.08
+  leftFootoffset: 0.08
   floorLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -6038,6 +6038,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!4 &3732995823154932055 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4956745792407328705, guid: 15cdb496804afa34791b5b55a81ada43,
+    type: 3}
+  m_PrefabInstance: {fileID: 8577006418407947926}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5822968420484544140 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2866808379920025626, guid: 15cdb496804afa34791b5b55a81ada43,
+    type: 3}
+  m_PrefabInstance: {fileID: 8577006418407947926}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7158301039743855602 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1463882340329493860, guid: 15cdb496804afa34791b5b55a81ada43,
