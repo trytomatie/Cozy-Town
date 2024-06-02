@@ -5080,8 +5080,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   framesPerSecond: 12
   rootBone: {fileID: 7158301039743855602}
-  divisions360: 5
-  snapRotationAngles: {x: 11.25, y: 11.25, z: 11.25}
+  divisions360: 0
+  snapRotationAngles: {x: 0, y: 0, z: 0}
   isPaused: 0
   lastTime: 0
   transforms: []
