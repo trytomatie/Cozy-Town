@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 8167a4faccc211c419a66c06fdd307aa
+timeCreated: 1501689239
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 277627
+  packageName: Fake Stop Motion
+  packageVersion: 1.0.0
+  assetPath: Assets/Abiogenesis3d/UnityTechnologies/3DGamekit/Animations/AnimationClips/Weapons/StaffSwish03.anim
+  uploadId: 655799

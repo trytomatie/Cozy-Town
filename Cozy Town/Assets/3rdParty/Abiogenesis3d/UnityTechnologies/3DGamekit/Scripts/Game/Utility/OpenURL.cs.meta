@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 4a285a926a0cd654280fc5b842d63c0a
+timeCreated: 1517331353
+licenseType: Store
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 277627
+  packageName: Fake Stop Motion
+  packageVersion: 1.0.0
+  assetPath: Assets/Abiogenesis3d/UnityTechnologies/3DGamekit/Scripts/Game/Utility/OpenURL.cs
+  uploadId: 655799

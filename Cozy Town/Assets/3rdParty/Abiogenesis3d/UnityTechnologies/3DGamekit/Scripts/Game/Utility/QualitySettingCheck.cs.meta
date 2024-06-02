@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 7124386dc596efb45b4f13a274e0298f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 277627
+  packageName: Fake Stop Motion
+  packageVersion: 1.0.0
+  assetPath: Assets/Abiogenesis3d/UnityTechnologies/3DGamekit/Scripts/Game/Utility/QualitySettingCheck.cs
+  uploadId: 655799
