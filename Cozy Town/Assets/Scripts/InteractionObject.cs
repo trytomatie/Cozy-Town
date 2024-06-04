@@ -35,5 +35,6 @@ public enum AnimationType
 {
     None,
     Dance,
-    Sit
+    Sit,
+    Paint
 }
