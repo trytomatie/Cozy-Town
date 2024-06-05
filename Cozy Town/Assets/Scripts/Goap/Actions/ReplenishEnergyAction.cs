@@ -24,15 +24,14 @@ public class ReplenishEnergyAction : ActionBase<InteractionData>
         {
             return;
         }
-        data.interactionTarget.occupant = agent;
+        data.interactionTarget.Occupant = agent;
     }
 
     public override ActionRunState Perform(IMonoAgent agent, InteractionData data, ActionContext context)
     {
-        if (data.interactionTarget == null || data.interactionTarget.occupant != agent)
+        if (data.interactionTarget == null || data.interactionTarget.Occupant != agent)
         {
-            data.ActionStarted = true;
-            data.Timer = 0;
+            return ActionRunState.Stop;
         }
         if (!data.ActionStarted)
         {
@@ -42,6 +41,7 @@ public class ReplenishEnergyAction : ActionBase<InteractionData>
                 data.Animator.SetInteger("Interaction", (int)data.interactionTarget.animationType);
                 agent.transform.position = data.Target.Position;
                 agent.transform.rotation = data.TargetTransform.Transform.rotation;
+                data.interactionTarget.interacting = true;
                 data.Stats.GetComponent<NavMeshAgent>().enabled = false;
                 data.Timer = Random.Range(5, 20);
                 data.ActionStarted = true;
@@ -50,6 +50,8 @@ public class ReplenishEnergyAction : ActionBase<InteractionData>
         }
         else
         {
+            agent.transform.position = data.Target.Position;
+            agent.transform.rotation = data.TargetTransform.Transform.rotation;
             data.Timer -= context.DeltaTime;
             if (data.Timer > 0)
             {
@@ -67,7 +69,7 @@ public class ReplenishEnergyAction : ActionBase<InteractionData>
         data.Animator.SetInteger("Interaction", 0);
         if(data.Stats.Resting) data.Stats.energy += 60;
         data.Stats.Resting = false;
-        if(data.interactionTarget != null) data.interactionTarget.occupant = null;
+        if(data.interactionTarget != null) data.interactionTarget.Occupant = null;
 
     }
 

@@ -24,15 +24,14 @@ public class DanceAction : ActionBase<InteractionData>
         {
             return;
         }
-        data.interactionTarget.occupant = agent;
+        data.interactionTarget.Occupant = agent;
     }
 
     public override ActionRunState Perform(IMonoAgent agent, InteractionData data, ActionContext context)
     {
-        if (data.interactionTarget == null || data.interactionTarget.occupant != agent)
+        if (data.interactionTarget == null || data.interactionTarget.Occupant != agent)
         {
-            data.ActionStarted = true;
-            data.Timer = 0;
+            return ActionRunState.Stop;
         }
         if (!data.ActionStarted)
         {
@@ -42,6 +41,7 @@ public class DanceAction : ActionBase<InteractionData>
                 data.Animator.SetInteger("Interaction", (int)data.interactionTarget.animationType);
                 agent.transform.position = data.Target.Position;
                 agent.transform.rotation = data.TargetTransform.Transform.rotation;
+                data.interactionTarget.interacting = true;
                 data.Stats.GetComponent<NavMeshAgent>().enabled = false;
                 data.Timer = Random.Range(15, 15);
                 data.ActionStarted = true;
@@ -67,7 +67,7 @@ public class DanceAction : ActionBase<InteractionData>
         data.Animator.SetInteger("Interaction", 0);
         if (data.Stats.HavingFun) data.Stats.IncreaseFun(40);
         data.Stats.HavingFun = false;
-        if(data.interactionTarget != null) data.interactionTarget.occupant = null;
+        if(data.interactionTarget != null) data.interactionTarget.Occupant = null;
 
     }
 

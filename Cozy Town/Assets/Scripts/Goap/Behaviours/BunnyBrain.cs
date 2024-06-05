@@ -37,12 +37,12 @@ public class BunnyBrain : MonoBehaviour
 
     private void Update()
     {
-        if(stats.Fun < 75 && InteractionCollection.Instance.Get<DanceSpot_InteractionObject>().Where(e => e.occupant == null).Count() > 0)
+        if(stats.Fun < 75 && InteractionCollection.Instance.Get<DanceSpot_InteractionObject>().Where(e => e.Occupant == null).Count() > 0)
         {
             agentBehaviour.SetGoal<HaveFunGoal>(true);
             return;
         }
-        if(stats.Energy < 20 && InteractionCollection.Instance.Get<RestingPlace_InteractionObject>().Where(e => e.occupant == null).Count() > 0)
+        if(stats.Energy < 20 && InteractionCollection.Instance.Get<RestingPlace_InteractionObject>().Where(e => e.Occupant == null).Count() > 0)
         {
             agentBehaviour.SetGoal<RestoreEnergyGoal>(true);
             return;
