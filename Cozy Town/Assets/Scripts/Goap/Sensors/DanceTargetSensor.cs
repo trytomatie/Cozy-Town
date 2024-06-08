@@ -22,7 +22,7 @@ public class DanceTargetSensor : LocalTargetSensorBase, IInjectable
     public override ITarget Sense(IMonoAgent agent, IComponentReference references)
     {
         
-        InteractionObject io = InteractionCollection.Instance.Get<DanceSpot_InteractionObject>().OrderBy(x => Vector3.Distance(x.transform.position, agent.transform.position)).Where(e => e.Occupant == null).FirstOrDefault();
+        InteractionObject io = InteractionCollection.Instance.Get<Fun_InteractionObject>().OrderBy(x => Vector3.Distance(x.transform.position, agent.transform.position)).Where(e => e.Occupant == null || e.Occupant == agent).FirstOrDefault();
         if(io != null)
         {
             return new TransformTarget(io.transform);

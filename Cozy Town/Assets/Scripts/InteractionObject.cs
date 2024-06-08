@@ -2,13 +2,15 @@
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 
 public class InteractionObject : MonoBehaviour, IInteractable
 {
     public AnimationType animationType = AnimationType.None;
-    private IMonoAgent occupant = null;
+    public EquipedItem equipedItem = EquipedItem.None;
+    public volatile IMonoAgent occupant = null;
     public bool interacting = false;
 
 
@@ -52,5 +54,17 @@ public enum AnimationType
     None,
     Dance,
     Sit,
-    Paint
+    Paint,
+    Roasting,
+    Watering,
+    GroundSit,
+    Eeping,
+}
+
+public enum EquipedItem
+{
+    None,
+    Stick,
+    WateringCan,
+    PaintBrush
 }

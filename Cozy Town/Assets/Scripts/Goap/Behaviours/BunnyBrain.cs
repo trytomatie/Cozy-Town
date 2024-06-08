@@ -37,7 +37,7 @@ public class BunnyBrain : MonoBehaviour
 
     private void Update()
     {
-        if(stats.Fun < 75 && InteractionCollection.Instance.Get<DanceSpot_InteractionObject>().Where(e => e.Occupant == null).Count() > 0)
+        if(stats.Fun < 75 && InteractionCollection.Instance.Get<Fun_InteractionObject>().Where(e => e.Occupant == null).Count() > 0)
         {
             agentBehaviour.SetGoal<HaveFunGoal>(true);
             return;

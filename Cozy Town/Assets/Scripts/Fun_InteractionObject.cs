@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class DanceSpot_InteractionObject : InteractionObject
+public class Fun_InteractionObject : InteractionObject
 {
     public override void Interact()
     {

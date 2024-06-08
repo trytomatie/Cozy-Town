@@ -20,7 +20,7 @@ public class InteractionCollection : MonoBehaviour
 
     private void Update()
     {
-        print($"Interactables:{Interactables.Count()} DanceSpots: {Get<DanceSpot_InteractionObject>().Count()}");
+        print($"Interactables:{Interactables.Count()} DanceSpots: {Get<Fun_InteractionObject>().Count()}");
     }
 
     public T[] Get<T>()
