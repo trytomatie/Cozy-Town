@@ -4,6 +4,7 @@ using CrashKonijn.Goap.Enums;
 using CrashKonijn.Goap.Interfaces;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Rendering;
 
 public class DanceAction : ActionBase<InteractionData>
 {
@@ -20,18 +21,20 @@ public class DanceAction : ActionBase<InteractionData>
         }
         data.ActionStarted = false;
         data.interactionTarget = (data.Target as TransformTarget).Transform.GetComponent<InteractionObject>();
-        if(data.interactionTarget == null)
+        agent.GetComponent<BunnyBrain>().Equip((int)data.interactionTarget.equipedItem);
+        if (data.interactionTarget == null)
         {
             return;
         }
-        data.interactionTarget.Occupant = agent;
+        data.interactionTarget.Occupant = agent.gameObject;
     }
 
     public override ActionRunState Perform(IMonoAgent agent, InteractionData data, ActionContext context)
     {
-        if (data.interactionTarget == null || data.interactionTarget.Occupant != agent)
+        if (data.interactionTarget == null || data.interactionTarget.Occupant != agent.gameObject)
         {
-            return ActionRunState.Stop;
+            data.ActionStarted = true;
+            data.Timer = 0;
         }
         if (!data.ActionStarted)
         {

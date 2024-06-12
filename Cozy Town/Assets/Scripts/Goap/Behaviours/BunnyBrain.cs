@@ -12,11 +12,37 @@ public class BunnyBrain : MonoBehaviour
 {
     private AgentBehaviour agentBehaviour;
     private AgentStatsBehaviour stats;
+    public GameObject[] leftHandEquipment;
+    public GameObject[] rightHandEquipment;
     private void Awake()
     {
         agentBehaviour = GetComponent<AgentBehaviour>();
         stats = GetComponent<AgentStatsBehaviour>();
-    
+        foreach (var item in leftHandEquipment)
+        {
+            item.SetActive(false);
+        }
+    }
+
+    public void Equip(int i)
+    {
+        foreach (var item in leftHandEquipment)
+        {
+            item.SetActive(false);
+        }
+        if(i == 0)
+        {             
+            return;
+        }
+        i -= 1;
+        if (i < leftHandEquipment.Length)
+        {
+            leftHandEquipment[i].SetActive(true);
+        }
+        if (i < rightHandEquipment.Length)
+        {
+            rightHandEquipment[i].SetActive(true);
+        }
     }
 
     private void Start()
@@ -37,18 +63,18 @@ public class BunnyBrain : MonoBehaviour
 
     private void Update()
     {
-        if(stats.Fun < 75 && InteractionCollection.Instance.Get<Fun_InteractionObject>().Where(e => e.Occupant == null).Count() > 0)
+        print(InteractionCollection.CountOfAvailableFunSpots());
+        if(stats.Fun < 75 && InteractionCollection.CountOfAvailableFunSpots() > 0)
         {
             agentBehaviour.SetGoal<HaveFunGoal>(true);
             return;
         }
-        if(stats.Energy < 20 && InteractionCollection.Instance.Get<RestingPlace_InteractionObject>().Where(e => e.Occupant == null).Count() > 0)
+        if(stats.Energy < 20 && InteractionCollection.CountOfAvailableFunSpots() > 0)
         {
             agentBehaviour.SetGoal<RestoreEnergyGoal>(true);
             return;
         }
-
-        agentBehaviour.SetGoal<WanderGoal>(false);
+        agentBehaviour.SetGoal<WanderGoal>(true);
 
     }
 

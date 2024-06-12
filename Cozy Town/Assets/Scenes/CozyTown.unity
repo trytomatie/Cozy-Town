@@ -192,6 +192,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BunnyGOAPNPC (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5737583717369443264, guid: ee054e19c95343045a0cd323e15d5bed,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -270,6 +275,74 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dd719425917947498dd09af11caad36, type: 3}
+--- !u!1001 &225992053
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4131796912923608011, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_Name
+      value: BunnyNPC (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.322
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.701
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4758cc42188f41346837ad0b5d261d13, type: 3}
 --- !u!1001 &251417278
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -342,6 +415,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BunnyGOAPNPC (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5737583717369443264, guid: ee054e19c95343045a0cd323e15d5bed,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -494,11 +572,152 @@ PrefabInstance:
       propertyPath: m_Name
       value: BunnyGOAPNPC (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5737583717369443264, guid: ee054e19c95343045a0cd323e15d5bed,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee054e19c95343045a0cd323e15d5bed, type: 3}
+--- !u!1001 &661719709
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4131796912923608011, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_Name
+      value: BunnyNPC (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.322
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.701
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4758cc42188f41346837ad0b5d261d13, type: 3}
+--- !u!1001 &904367432
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4131796912923608011, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_Name
+      value: BunnyNPC (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.322
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.701
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4758cc42188f41346837ad0b5d261d13, type: 3}
 --- !u!1 &967935660
 GameObject:
   m_ObjectHideFlags: 0
@@ -607,6 +826,74 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10, y: 17.143988, z: 10}
   m_Center: {x: 0, y: -9.6, z: 0}
+--- !u!1001 &974149348
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4131796912923608011, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_Name
+      value: BunnyNPC (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.322
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.701
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4758cc42188f41346837ad0b5d261d13, type: 3}
 --- !u!114 &1126521506 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4554205165981836889, guid: 19b6dd58a4c0a134d8ba124379e851c3,
@@ -776,6 +1063,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BunnyGOAPNPC (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5737583717369443264, guid: ee054e19c95343045a0cd323e15d5bed,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1971,6 +2263,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1753601397
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4131796912923608011, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_Name
+      value: BunnyNPC (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.322
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.701
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4758cc42188f41346837ad0b5d261d13, type: 3}
 --- !u!1001 &1864333969
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2060,17 +2420,17 @@ PrefabInstance:
     - target: {fileID: 1904252783291514905, guid: ee054e19c95343045a0cd323e15d5bed,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.745
+      value: -1.324
       objectReference: {fileID: 0}
     - target: {fileID: 1904252783291514905, guid: ee054e19c95343045a0cd323e15d5bed,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.52
+      value: 0.578
       objectReference: {fileID: 0}
     - target: {fileID: 1904252783291514905, guid: ee054e19c95343045a0cd323e15d5bed,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.96
+      value: -2.7
       objectReference: {fileID: 0}
     - target: {fileID: 1904252783291514905, guid: ee054e19c95343045a0cd323e15d5bed,
         type: 3}
@@ -2117,6 +2477,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BunnyGOAPNPC
       objectReference: {fileID: 0}
+    - target: {fileID: 5737583717369443264, guid: ee054e19c95343045a0cd323e15d5bed,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2130,30 +2495,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2704298307128723419, guid: 4758cc42188f41346837ad0b5d261d13,
+    - target: {fileID: 1210024569058953139, guid: 4758cc42188f41346837ad0b5d261d13,
         type: 3}
-      propertyPath: m_Speed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2704298307128723419, guid: 4758cc42188f41346837ad0b5d261d13,
-        type: 3}
-      propertyPath: m_AngularSpeed
-      value: 720
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4131796912923608011, guid: 4758cc42188f41346837ad0b5d261d13,
         type: 3}
       propertyPath: m_Name
       value: BunnyNPC
       objectReference: {fileID: 0}
-    - target: {fileID: 4131796912923608011, guid: 4758cc42188f41346837ad0b5d261d13,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.322
+      value: -0.122
       objectReference: {fileID: 0}
     - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
         type: 3}
@@ -2163,7 +2518,7 @@ PrefabInstance:
     - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.701
+      value: -0.282
       objectReference: {fileID: 0}
     - target: {fileID: 4830363965381564215, guid: 4758cc42188f41346837ad0b5d261d13,
         type: 3}
@@ -2200,6 +2555,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5893328870682998997, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6967113528105027565, guid: 4758cc42188f41346837ad0b5d261d13,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2213,6 +2578,11 @@ SceneRoots:
   - {fileID: 1530671504}
   - {fileID: 1660322055}
   - {fileID: 6802242709833749637}
+  - {fileID: 904367432}
+  - {fileID: 225992053}
+  - {fileID: 661719709}
+  - {fileID: 1753601397}
+  - {fileID: 974149348}
   - {fileID: 4834308675440302823}
   - {fileID: 251417278}
   - {fileID: 1352467237}

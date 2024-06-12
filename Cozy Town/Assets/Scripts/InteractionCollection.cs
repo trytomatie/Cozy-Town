@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,4 +30,13 @@ public class InteractionCollection : MonoBehaviour
         return this.Interactables.Where(x => x is T).Cast<T>().ToArray();
     }
 
+    public static int CountOfAvailableFunSpots()
+    {
+        return InteractionCollection.Instance.Get<Fun_InteractionObject>().Where(e => e.Occupant == null).Count();
+    }
+
+    internal static int CountOfAvailableRestingSpots()
+    {
+        return InteractionCollection.Instance.Get<RestingPlace_InteractionObject>().Where(e => e.Occupant == null).Count();
+    }
 }

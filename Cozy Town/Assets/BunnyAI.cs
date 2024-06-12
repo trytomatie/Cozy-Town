@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,23 +8,76 @@ public class BunnyAI : MonoBehaviour
     public NPCStates currentState = NPCStates.Idle;
     public State[] states;
     private NavMeshAgent agent;
+    public InteractionObject currentInteraction;
+    public Animator anim;
+    public GameObject[] leftHandEquipment;
+    public GameObject[] rightHandEquipment;
+    public Vector3 debug_CurrentDestination;
 
-
+    public float fun = 100;
+    public float stamina = 100;
 
     public void Start()
     {
         states = new State[]
         {
             new BunnyIdle(this),
-            new Wander(this)
+            new Wander(this),
+            new GoToFun(this),
+            new HaveFun(this),
+            new GoToReplenishStamina(this),
+            new RegenerateStamina(this)
         };
         Agent = GetComponent<NavMeshAgent>();
         ChangeState(NPCStates.Idle);
+        Equip(0);
     }
 
     private void Update()
     {
         states[(int)currentState].Update();
+        fun -= Time.deltaTime;
+        stamina -= Time.deltaTime;
+        
+    }
+
+    public void Equip(int i)
+    {
+        foreach (var item in leftHandEquipment)
+        {
+            item.SetActive(false);
+        }
+        if (i == 0)
+        {
+            return;
+        }
+        i -= 1;
+        if (i < leftHandEquipment.Length)
+        {
+            leftHandEquipment[i].SetActive(true);
+        }
+        if (i < rightHandEquipment.Length)
+        {
+            rightHandEquipment[i].SetActive(true);
+        }
+    }
+
+    public void AnimateMovement()
+    {
+        anim.SetFloat("Speed", agent.velocity.magnitude);
+    }
+    public void AnimateMovement(int speed)
+    {
+        anim.SetFloat("Speed", speed);
+    }
+
+    public void Interact(InteractionObject io)
+    {
+        transform.position = io.transform.position;
+        transform.rotation = io.transform.rotation;
+        agent.transform.position = io.transform.position;
+        agent.transform.rotation = io.transform.rotation;
+        anim.SetInteger("Interaction", (int)io.animationType);
     }
 
     public void ChangeState(NPCStates targetState)
@@ -37,12 +91,18 @@ public class BunnyAI : MonoBehaviour
     }
     public void SetDestinaton(Vector3 destination)
     {
+        debug_CurrentDestination = destination;
         if (transform.position.y < -20) return;
         NavMeshPath path = new NavMeshPath();
-        agent.CalculatePath(destination, path);
+        NavMesh.SamplePosition(destination, out NavMeshHit hit, 100, NavMesh.AllAreas);
+        agent.CalculatePath(hit.position, path);
         if (path.status == NavMeshPathStatus.PathComplete)
         {
             agent.SetPath(path);
+        }
+        else
+        {
+            Debug.LogError("Path not found");
         }
     }
     public NavMeshAgent Agent { get => agent; set => agent = value; }
@@ -52,6 +112,7 @@ public class BunnyIdle : State
 {
     private float enterTime = 0f;
     private BunnyAI bunny;
+    private float randomWanderTime;
 
     public BunnyIdle(BunnyAI bunny)
     {
@@ -61,15 +122,30 @@ public class BunnyIdle : State
     public void Enter()
     {
         enterTime = Time.time;
-
+        if(bunny.fun < 75 && InteractionCollection.CountOfAvailableFunSpots() > 0)
+        {
+            bunny.ChangeState(NPCStates.GoToFun);
+            return;
+        }
+        if(bunny.stamina < 75 && InteractionCollection.CountOfAvailableRestingSpots() > 0)
+        {
+            bunny.ChangeState(NPCStates.GoToReplenishStamina);
+            return;
+        }
+        randomWanderTime = Random.Range(1, 5);
     }
 
     public void Update()
     {
-        if (enterTime + 5 < Time.time)
+        if(bunny.currentState != NPCStates.Idle)
+        {
+            return;
+        }
+        if (enterTime + randomWanderTime < Time.time)
         {
             bunny.ChangeState(NPCStates.Wander);
         }
+        bunny.AnimateMovement();
     }
 
     public void Exit()
@@ -121,11 +197,161 @@ public class Wander : State
 
     public void Update()
     {
+        bunny.AnimateMovement();
         // If close to destination, switch to idle and then back to wander
-        if (Vector3.Distance(bunny.transform.position, destination) < 1f || enterTime + 5 < Time.time)
+        if ((Vector3.Distance(bunny.transform.position, destination) < 1f && enterTime + 5 < Time.time) || enterTime + 20 < Time.time)
         {
             bunny.ChangeState(NPCStates.Idle);
         }
+    }
+}
+
+public class GoToFun : State
+{
+    public BunnyAI agent;
+    public InteractionObject io;
+    public GoToFun(BunnyAI pc)
+    {
+        agent = pc;
+    }
+    public void Enter()
+    {
+        // Find Closest Fun Object
+        io = InteractionCollection.Instance.Get<Fun_InteractionObject>().OrderBy(x => Vector3.Distance(x.transform.position, agent.transform.position)).Where(e => e.Occupant == null).FirstOrDefault();
+        if(io == null)
+        {
+            agent.ChangeState(NPCStates.Wander);
+            return;
+        }
+        io.Occupant = agent.gameObject;
+        // Set Destination
+        agent.SetDestinaton(io.transform.position);
+
+
+    }
+    public void Update()
+    {
+        agent.AnimateMovement();
+        if (Vector3.Distance(agent.transform.position, io.transform.position) < 1f)
+        {
+            agent.currentInteraction = io;
+            agent.ChangeState(NPCStates.HaveFun);
+        }
+    }
+    public void Exit()
+    {
+
+    }
+}
+
+public class HaveFun : State
+{
+    public BunnyAI agent;
+    public InteractionObject io;
+    private float exitTime = 5;
+    private float enterTime;
+    public HaveFun(BunnyAI pc)
+    {
+        agent = pc;
+    }
+    public void Enter()
+    {
+        agent.AnimateMovement(0);
+        io = agent.currentInteraction;
+        agent.Interact(io);
+        enterTime = Time.time;
+        exitTime = enterTime + io.duration;
+        agent.Agent.enabled = false;
+        agent.Equip((int)io.equipedItem);
+    }
+
+
+    public void Update()
+    {
+        if (Time.time > exitTime)
+        {
+            agent.ChangeState(NPCStates.Wander);
+        }
+    }
+    public void Exit()
+    {
+        agent.Agent.enabled = true; ;
+        agent.fun += 50;
+        io.Occupant = null;
+        agent.anim.SetInteger("Interaction", 0);
+    }
+}
+
+public class GoToReplenishStamina : State
+{
+    public BunnyAI agent;
+    public InteractionObject io;
+    public GoToReplenishStamina(BunnyAI pc)
+    {
+        agent = pc;
+    }
+    public void Enter()
+    {
+        io = InteractionCollection.Instance.Get<RestingPlace_InteractionObject>().OrderBy(x => Vector3.Distance(x.transform.position, agent.transform.position)).Where(e => e.Occupant == null).FirstOrDefault();
+        if (io == null)
+        {
+            agent.ChangeState(NPCStates.Wander);
+            return;
+        }
+        io.Occupant = agent.gameObject;
+        // Set Destination
+        agent.SetDestinaton(io.transform.position);
+    }
+    public void Update()
+    {
+        agent.AnimateMovement();
+        if (Vector3.Distance(agent.transform.position, io.transform.position) < 1f)
+        {
+            agent.currentInteraction = io;
+            agent.ChangeState(NPCStates.RegenerateStamina);
+        }
+    }
+    public void Exit()
+    {
+
+    }
+}
+
+public class RegenerateStamina : State
+{
+    public BunnyAI agent;
+    public InteractionObject io;
+    private float exitTime = 5;
+    private float enterTime;
+    public RegenerateStamina(BunnyAI pc)
+    {
+        agent = pc;
+    }
+    public void Enter()
+    {
+        agent.AnimateMovement(0);
+        io = agent.currentInteraction;
+        agent.Interact(io);
+        enterTime = Time.time;
+        exitTime = enterTime + io.duration;
+        agent.Agent.enabled = false;
+        agent.Equip((int)io.equipedItem);
+    }
+
+
+    public void Update()
+    {
+        if (Time.time > exitTime)
+        {
+            agent.ChangeState(NPCStates.Wander);
+        }
+    }
+    public void Exit()
+    {
+        agent.Agent.enabled = true;
+        agent.stamina += 50;
+        io.Occupant = null;
+        agent.anim.SetInteger("Interaction", 0);
     }
 }
 
@@ -140,7 +366,9 @@ public enum NPCStates
 {
     Idle,
     Wander,
-    Follow,
-    Attack,
+    GoToFun,
+    HaveFun,
+    GoToReplenishStamina,
+    RegenerateStamina,
     Dead
 }

@@ -2,6 +2,7 @@ using CrashKonijn.Goap.Classes;
 using CrashKonijn.Goap.Interfaces;
 using CrashKonijn.Goap.Sensors;
 using System.Linq;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -21,8 +22,7 @@ public class DanceTargetSensor : LocalTargetSensorBase, IInjectable
 
     public override ITarget Sense(IMonoAgent agent, IComponentReference references)
     {
-        
-        InteractionObject io = InteractionCollection.Instance.Get<Fun_InteractionObject>().OrderBy(x => Vector3.Distance(x.transform.position, agent.transform.position)).Where(e => e.Occupant == null || e.Occupant == agent).FirstOrDefault();
+        InteractionObject io = InteractionCollection.Instance.Get<Fun_InteractionObject>().OrderBy(x => Vector3.Distance(x.transform.position, agent.transform.position)).Where(e => e.Occupant == null || e.Occupant == agent.gameObject).FirstOrDefault();
         if(io != null)
         {
             return new TransformTarget(io.transform);

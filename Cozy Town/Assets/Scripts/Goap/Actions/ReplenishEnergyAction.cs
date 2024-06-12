@@ -24,12 +24,12 @@ public class ReplenishEnergyAction : ActionBase<InteractionData>
         {
             return;
         }
-        data.interactionTarget.Occupant = agent;
+        data.interactionTarget.Occupant = agent.gameObject;
     }
 
     public override ActionRunState Perform(IMonoAgent agent, InteractionData data, ActionContext context)
     {
-        if (data.interactionTarget == null || data.interactionTarget.Occupant != agent)
+        if (data.interactionTarget == null || data.interactionTarget.Occupant != agent.gameObject)
         {
             return ActionRunState.Stop;
         }
@@ -41,6 +41,7 @@ public class ReplenishEnergyAction : ActionBase<InteractionData>
                 data.Animator.SetInteger("Interaction", (int)data.interactionTarget.animationType);
                 agent.transform.position = data.Target.Position;
                 agent.transform.rotation = data.TargetTransform.Transform.rotation;
+                agent.GetComponent<BunnyBrain>().Equip((int)data.interactionTarget.equipedItem);
                 data.interactionTarget.interacting = true;
                 data.Stats.GetComponent<NavMeshAgent>().enabled = false;
                 data.Timer = Random.Range(5, 20);

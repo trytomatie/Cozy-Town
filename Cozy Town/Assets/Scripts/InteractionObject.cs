@@ -10,8 +10,9 @@ public class InteractionObject : MonoBehaviour, IInteractable
 {
     public AnimationType animationType = AnimationType.None;
     public EquipedItem equipedItem = EquipedItem.None;
-    public volatile IMonoAgent occupant = null;
+    public GameObject occupant = null;
     public bool interacting = false;
+    public float duration = 15;
 
 
 
@@ -30,7 +31,7 @@ public class InteractionObject : MonoBehaviour, IInteractable
 
     }
 
-    public IMonoAgent Occupant 
+    public GameObject Occupant 
     { 
         get => occupant;
         set { 
