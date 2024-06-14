@@ -75,11 +75,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dd2d9882b6787b448a366bc5a7b760ae,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5467412075548738022}
+      addedObject: {fileID: 6843147891365398144}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dd2d9882b6787b448a366bc5a7b760ae,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6843147891365398144}
+      addedObject: {fileID: 6717659560537706345}
   m_SourcePrefab: {fileID: 100100000, guid: dd2d9882b6787b448a366bc5a7b760ae, type: 3}
 --- !u!1 &7824264306926709555 stripped
 GameObject:
@@ -87,27 +87,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6941233670869964386}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &5467412075548738022
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7824264306926709555}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 6.15525, y: 1.9208676, z: 6.2196236}
-  m_Center: {x: -0.09557123, y: 1.3234986, z: -0.044069536}
 --- !u!114 &6843147891365398144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,3 +110,24 @@ MonoBehaviour:
   canBePlacedOnSlope: 0
   grounded: 1
   groundedPoints: []
+--- !u!65 &6717659560537706345
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7824264306926709555}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.37272286, y: 0.11771306, z: 0.37662083}
+  m_Center: {x: -0.005787194, y: 0.07944392, z: -0.0026685894}

@@ -75,11 +75,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1c991110ade79744db0b6ac39d4fefa3,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1568519328959773781}
+      addedObject: {fileID: 2630868747815835575}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1c991110ade79744db0b6ac39d4fefa3,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2630868747815835575}
+      addedObject: {fileID: 7219933469826488240}
   m_SourcePrefab: {fileID: 100100000, guid: 1c991110ade79744db0b6ac39d4fefa3, type: 3}
 --- !u!1 &5875305553000175021 stripped
 GameObject:
@@ -87,27 +87,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6721673659011410172}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &1568519328959773781
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5875305553000175021}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 4.286396, y: 1.323623, z: 4.2886543}
-  m_Center: {x: 0.006372271, y: 0.8902408, z: 0.056117523}
 --- !u!114 &2630868747815835575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,3 +110,24 @@ MonoBehaviour:
   canBePlacedOnSlope: 0
   grounded: 1
   groundedPoints: []
+--- !u!65 &7219933469826488240
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5875305553000175021}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3708784, y: 0.1078237, z: 0.37107384}
+  m_Center: {x: 0.00055137277, y: 0.08037877, z: 0.0048555434}
