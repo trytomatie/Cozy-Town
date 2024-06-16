@@ -45,6 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationType: 2
+  equipedItem: 0
+  occupant: {fileID: 0}
+  interacting: 0
+  duration: 15
 --- !u!1 &6392503229879822020
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,6 +94,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationType: 2
+  equipedItem: 0
+  occupant: {fileID: 0}
+  interacting: 0
+  duration: 15
 --- !u!1001 &3465227161107492797
 PrefabInstance:
   m_ObjectHideFlags: 0
