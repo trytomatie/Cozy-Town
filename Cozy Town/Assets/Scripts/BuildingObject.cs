@@ -26,7 +26,22 @@ public class BuildingObject : MonoBehaviour
         {
             (component as Behaviour).enabled = true;
         }
+    }
 
+    public void DisableComponents()
+    {
+        foreach (var component in components)
+        {
+            component.enabled = false;
+        }
+        foreach (var component in externalComponents)
+        {
+            (component as Behaviour).enabled = false;
+        }
+        foreach(Collider col in GetComponentsInChildren<Collider>())
+        {
+            col.enabled = false;
+        }
     }
 
     public void DeleteBuildingObject()

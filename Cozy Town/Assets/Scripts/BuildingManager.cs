@@ -11,6 +11,7 @@ public class BuildingManager : MonoBehaviour
 {
     public GameObject[] buildingPrefabs;
     public GameObject buildingIndictaor;
+    public GameObject outlineIndicator;
     public LayerMask groundLayer;
     public LayerMask placeLayer;
 
@@ -20,10 +21,12 @@ public class BuildingManager : MonoBehaviour
     public Material canPlaceMaterial;
     public Material cantPlaceMaterial;
     public Material deleteMaterial;
+    public Material hoveredOutlineMaterial;
     public bool placeBuildingMode = false;
     private int selectedBuildingIndex = 0;
-    private DeletionMode buildingDeletionMode = DeletionMode.None;
+    private EditingMode buildingEditingMode = EditingMode.Edit;
     private GameObject deletionTarget;
+    private GameObject hoveredTaget;
     private Material[] deletionTargetOriginalMaterialRef;
 
     private Vector3 gridOffset = new Vector3(0f,0, 0f);
@@ -39,10 +42,11 @@ public class BuildingManager : MonoBehaviour
     public GameObject fenceHorizontal;
     public GameObject fenceEnd;
 
-    public enum DeletionMode
+    public enum EditingMode
     {
-        None,
-        Block,
+        Edit,
+        Delete,
+        
     }
 
     private void Awake()
@@ -64,11 +68,17 @@ public class BuildingManager : MonoBehaviour
         if (PlaceBuildingMode)
         {
             GetWorldPositionPointer();
+            return;
         }
-        if(BuildingDeletionMode != DeletionMode.None)
+        if(BuildingDeletionMode != EditingMode.Edit)
         {
-            GetDeletionTarget();
+            DeletionTarget = GetHoveredObject();
         }
+        else
+        {
+            HoveredTaget = GetHoveredObject();
+        }
+
     }
 
     public void SetBuildingIndicator(int index)
@@ -136,9 +146,9 @@ public class BuildingManager : MonoBehaviour
 
     public void PlaceOrRemoveBuilding()
     {
-        if(BuildingDeletionMode == DeletionMode.Block)
+        if(BuildingDeletionMode == EditingMode.Delete)
         {
-            if(DeletionTarget != null)
+            if(DeletionTarget != null && EventSystem.current.IsPointerOverGameObject())
             {
                 SoundManager.PlaySound(1, DeletionTarget.transform.position);
                 DeletionTarget.GetComponent<BuildingObject>().DeleteBuildingObject();
@@ -186,12 +196,12 @@ public class BuildingManager : MonoBehaviour
         }
     }
 
-    public void GetDeletionTarget()
+    public GameObject GetHoveredObject()
     {
         buildingIndictaor.SetActive(false);
         if (EventSystem.current.IsPointerOverGameObject())
         {
-            return;
+            return null;
         }
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -199,14 +209,13 @@ public class BuildingManager : MonoBehaviour
         {
             if(hit.collider.GetComponent<BuildingObject>() != null)
             {
-                DeletionTarget = hit.collider.gameObject;
+                return hit.collider.gameObject;
             }
         }
-        else
-        {
-
-        }
+            return null;
     }
+
+
 
     private bool CanPlaceBuilding(Vector3 pos)
     {
@@ -219,7 +228,6 @@ public class BuildingManager : MonoBehaviour
             colliders = Physics.OverlapBox(pos + col.center, col.size / 2, Quaternion.identity, placeLayer);
             if (colliders.Length > 0)
             {
-                print("Colliding");
                 return false;
             }
         }
@@ -287,7 +295,7 @@ public class BuildingManager : MonoBehaviour
             placeBuildingMode = value;
             if(value)
             {
-                BuildingDeletionMode = DeletionMode.None;
+                BuildingDeletionMode = EditingMode.Edit;
                 //GameUI.instance.interfaceAnimator.SetFloat("Buildingmode", 1);
                 buildingIndictaor.SetActive(true);
                 print("Building Mode Activated");
@@ -309,15 +317,15 @@ public class BuildingManager : MonoBehaviour
 
     public void EnableDeletionMode()
     {
-        BuildingDeletionMode = DeletionMode.Block;
+        BuildingDeletionMode = EditingMode.Delete;
     }
 
-    public DeletionMode BuildingDeletionMode 
+    public EditingMode BuildingDeletionMode 
     { 
-        get => buildingDeletionMode;
+        get => buildingEditingMode;
         set 
         {
-            if(value != DeletionMode.None)
+            if(value != EditingMode.Edit)
             {
                 GameManager.SetCursor(1);
                 PlaceBuildingMode = false;
@@ -327,7 +335,7 @@ public class BuildingManager : MonoBehaviour
                 GameManager.SetCursor(0);
                 DeletionTarget = null;
             }
-            buildingDeletionMode = value;
+            buildingEditingMode = value;
             
         } 
     }
@@ -365,6 +373,56 @@ public class BuildingManager : MonoBehaviour
             }
 
         } 
+    }
+
+    public GameObject HoveredTaget { get => hoveredTaget; set
+        {
+            if (value != hoveredTaget)
+            {
+                if (value == null)
+                {
+                    outlineIndicator.SetActive(false);
+                    return;
+                }
+                if (value != null)
+                {
+                    BuildingObject bo = value.GetComponent<BuildingObject>();
+                    if (bo != null)
+                    {
+                        if (bo.buildingType != BuildingType.GroundBlock)
+                        {
+                            if (outlineIndicator.transform.childCount > 0) Destroy(outlineIndicator.transform.GetChild(0).gameObject);
+                            GameObject _Instance = Instantiate(value, outlineIndicator.transform.position, value.transform.rotation, outlineIndicator.transform);
+                            _Instance.GetComponent<BuildingObject>().DisableComponents();
+                            foreach (Renderer renderer in _Instance.GetComponentsInChildren<Renderer>())
+                            {
+                                renderer.material = hoveredOutlineMaterial;
+                            }
+                            outlineIndicator.SetActive(true);
+                        }
+                        else
+                        {
+                            if (outlineIndicator.transform.childCount > 0) Destroy(outlineIndicator.transform.GetChild(0).gameObject);
+                            outlineIndicator.SetActive(false);
+                        }
+                    }
+
+                    
+                    outlineIndicator.transform.position = value.transform.position;
+                }
+                hoveredTaget = value;
+            }
+
+        }
+    }
+
+    public void PlaceOutline(GameObject go)
+    {
+        if (go == null)
+        {
+
+        }
+
     }
 }
 
