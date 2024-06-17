@@ -79,7 +79,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 46250475c73f2d547a5b35962638db6b,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3239753320778299803}
+      addedObject: {fileID: 7680586780229907148}
   m_SourcePrefab: {fileID: 100100000, guid: 46250475c73f2d547a5b35962638db6b, type: 3}
 --- !u!1 &3275810794199213597 stripped
 GameObject:
@@ -110,7 +110,7 @@ MonoBehaviour:
   canBePlacedOnSlope: 0
   grounded: 1
   groundedPoints: []
---- !u!65 &3239753320778299803
+--- !u!65 &7680586780229907148
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,5 +129,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5139793, y: 0.40732822, z: 0.5139793}
-  m_Center: {x: -0.00000013411045, y: 0.20366411, z: 0}
+  m_Size: {x: 0.47215986, y: 0.4107507, z: 0.442223}
+  m_Center: {x: -0.004276894, y: 0.20537534, z: -0.000000029802322}
