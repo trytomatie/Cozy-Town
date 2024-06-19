@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 4830363965381564215}
   - component: {fileID: 2704298307128723419}
   - component: {fileID: 9162201021135691381}
+  - component: {fileID: 6012303677600545402}
   m_Layer: 0
   m_Name: BunnyNPC
   m_TagString: Untagged
@@ -146,6 +147,27 @@ MonoBehaviour:
   debug_CurrentDestination: {x: 0, y: 0, z: 0}
   fun: 100
   stamina: 100
+--- !u!114 &6012303677600545402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4131796912923608011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ab8e05c1057e3741a0e293b1d73cfdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  framesPerSecond: 12
+  rootBone: {fileID: 8036563250671511936}
+  divisions360: 0
+  snapRotationAngles: {x: 0, y: 0, z: 0}
+  isPaused: 0
+  lastTime: 0
+  transforms: []
+  originals: []
+  rendered: []
 --- !u!1 &4604445751436786127
 GameObject:
   m_ObjectHideFlags: 0
@@ -1669,6 +1691,12 @@ Transform:
 --- !u!4 &6813225220543574931 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2691510682411470711, guid: 15cdb496804afa34791b5b55a81ada43,
+    type: 3}
+  m_PrefabInstance: {fileID: 8923700734931074276}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8036563250671511936 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1463882340329493860, guid: 15cdb496804afa34791b5b55a81ada43,
     type: 3}
   m_PrefabInstance: {fileID: 8923700734931074276}
   m_PrefabAsset: {fileID: 0}
