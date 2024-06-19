@@ -29,6 +29,7 @@ public class BunnyAI : MonoBehaviour
             new RegenerateStamina(this)
         };
         Agent = GetComponent<NavMeshAgent>();
+        Agent.updateRotation = false;
         ChangeState(NPCStates.Idle);
         Equip(0);
     }
@@ -38,6 +39,7 @@ public class BunnyAI : MonoBehaviour
         states[(int)currentState].Update();
         fun -= Time.deltaTime;
         stamina -= Time.deltaTime;
+        transform.LookAt(transform.position + agent.desiredVelocity.normalized);
         
     }
 
@@ -96,9 +98,10 @@ public class BunnyAI : MonoBehaviour
         NavMeshPath path = new NavMeshPath();
         NavMesh.SamplePosition(destination, out NavMeshHit hit, 100, NavMesh.AllAreas);
         agent.CalculatePath(hit.position, path);
+        agent.SetPath(path);
         if (path.status == NavMeshPathStatus.PathComplete)
         {
-            agent.SetPath(path);
+
         }
         else
         {

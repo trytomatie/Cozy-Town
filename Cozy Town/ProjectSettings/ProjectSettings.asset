@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: DefaultCompany
   productName: Cozy Town
-  defaultCursor: {fileID: 2800000, guid: 9f98e81f98dd06543b27f3b278ff9976, type: 3}
+  defaultCursor: {fileID: 2800000, guid: 0eed99c19d429594fa879eb653ff8380, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1
