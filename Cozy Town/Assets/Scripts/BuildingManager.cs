@@ -85,6 +85,7 @@ public class BuildingManager : MonoBehaviour
     {
         if(buildingPrefabs.Length > index)
         {
+
             selectedBuildingIndex = index;
             if(buildingIndictaor.transform.GetChild(0).childCount > 0)
             {
@@ -92,6 +93,11 @@ public class BuildingManager : MonoBehaviour
             }
 
             Instantiate(buildingPrefabs[selectedBuildingIndex], buildingIndictaor.transform.position, buildingIndictaor.transform.rotation, buildingIndictaor.transform.GetChild(0));
+            // Reset Rotation if GroundBlock
+            if (buildingIndictaor.GetComponentInChildren<BuildingObject>().buildingType == BuildingType.GroundBlock)
+            {
+                buildingIndictaor.transform.eulerAngles = new Vector3(0, 0, 0);
+            }
             // Disable all Collider
             Collider[] colliders = buildingIndictaor.GetComponentsInChildren<Collider>();
             foreach(Collider c in colliders)
@@ -280,7 +286,23 @@ public class BuildingManager : MonoBehaviour
 
     public void RotateBuilding()
     {
-        buildingIndictaor.transform.Rotate(Vector3.up, 45);
+        if(buildingIndictaor.GetComponentInChildren<BuildingObject>().buildingType == BuildingType.GroundBlock)
+        {
+            if(buildingIndictaor.GetComponentInChildren<BuildingObject>().gameObject.tag.Equals("ForceRotate"))
+            {
+                buildingIndictaor.transform.Rotate(Vector3.up, 90);
+            }
+            else
+            {
+                buildingIndictaor.transform.eulerAngles = new Vector3(0, 0, 0);
+                return;
+            }
+
+        }
+        else
+        {
+            buildingIndictaor.transform.Rotate(Vector3.up, 45);
+        }
     }
 
     private void UnlockPlacementInput()

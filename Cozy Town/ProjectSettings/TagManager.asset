@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - DanceSpot
+  - ForceRotate
   layers:
   - Default
   - TransparentFX
