@@ -1,5 +1,6 @@
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour
@@ -52,7 +53,20 @@ public class CameraController : MonoBehaviour
         }
     }
     public void Zoom()
-    {           
+    {   
+        // Get the UI Element the mouse is over
+        PointerEventData pointerData = new PointerEventData(EventSystem.current);
+        pointerData.position = Mouse.current.position.ReadValue();
+        var results = new System.Collections.Generic.List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerData, results);
+        if(results.Count > 0)
+        {
+            Debug.Log(results[0].gameObject.name);
+            if(results[0].gameObject.GetComponent<UnityEngine.UIElements.ScrollView>() != null)
+            {
+                return;
+            }
+        }
         zoomLevel -= GameManager.PlayerInputMap.Camera.Zoom.ReadValue<Vector2>().y * 0.05f;
         zoomLevel = Mathf.Clamp(zoomLevel, 0, 1);
         virtualCamera.m_Lens.FieldOfView = zoom_Fov.Evaluate(zoomLevel);

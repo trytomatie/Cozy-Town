@@ -12,6 +12,7 @@ public class BuildingManagerUI : SerializedMonoBehaviour
     public TextMeshProUGUI buildingDrawerTitle;
     [DictionaryDrawerSettings(KeyLabel = "Index", ValueLabel = "Categories")]
     public Dictionary<int, CategoryInformation> categories;
+    public RectTransform scrollRectContent;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -52,6 +53,8 @@ public class BuildingManagerUI : SerializedMonoBehaviour
         }
         categories[i].transform.gameObject.SetActive(true);
         buildingDrawerTitle.text = categories[i].name;
+        // Set scrollrect height to category height
+        scrollRectContent.sizeDelta = new Vector2(scrollRectContent.sizeDelta.x, categories[i].transform.GetComponent<RectTransform>().sizeDelta.y);
         buildingDrawer.SetActive(true);
     }
 
