@@ -594,6 +594,34 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee054e19c95343045a0cd323e15d5bed, type: 3}
+--- !u!1 &633534135 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2538559253242033113, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1530671504}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &633534139
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633534135}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: cee6e8a9a39b81f4384d0afb451dcd57, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &661719709
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2125,6 +2153,46 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4022723748905735559, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4022723748905735559, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4022723748905735559, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 633534139}
+    - target: {fileID: 4022723748905735559, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4022723748905735559, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 4022723748905735559, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.Animator, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4022723748905735559, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: OpenClose
+      objectReference: {fileID: 0}
+    - target: {fileID: 4022723748905735559, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4316525696778746879, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2163,12 +2231,12 @@ PrefabInstance:
     - target: {fileID: 4806586162983124379, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 444
+      value: 428
       objectReference: {fileID: 0}
     - target: {fileID: 4806586162983124379, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 437
+      value: 427.99994
       objectReference: {fileID: 0}
     - target: {fileID: 4810531917095050879, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
@@ -2443,7 +2511,7 @@ PrefabInstance:
     - target: {fileID: 6287306483379125476, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6329877725157856245, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
@@ -2937,6 +3005,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1302826191}
+    - targetCorrespondingSourceObject: {fileID: 2538559253242033113, guid: 19b6dd58a4c0a134d8ba124379e851c3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 633534139}
   m_SourcePrefab: {fileID: 100100000, guid: 19b6dd58a4c0a134d8ba124379e851c3, type: 3}
 --- !u!1 &1660322052
 GameObject:
