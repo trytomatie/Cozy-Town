@@ -1,3 +1,4 @@
+using FronkonGames.Artistic.OilPaint.Editor;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -35,6 +36,7 @@ public class BuildingManager : MonoBehaviour
 
     // Flags
     private bool lockPlaceInput = true;
+    private bool placeingButtonRegistered = false;
 
     public GameObject cornerPrefab;
 
@@ -79,6 +81,11 @@ public class BuildingManager : MonoBehaviour
             HoveredTaget = GetHoveredObject();
         }
 
+    }
+
+    private void Update()
+    {
+        PlaceOrRemoveBuilding();
     }
 
     public void SetBuildingIndicator(int index)
@@ -152,9 +159,11 @@ public class BuildingManager : MonoBehaviour
 
     public void PlaceOrRemoveBuilding()
     {
+        if (!placeingButtonRegistered) return;
+        placeingButtonRegistered = false;
         if(BuildingDeletionMode == EditingMode.Delete)
         {
-            if(DeletionTarget != null && EventSystem.current.IsPointerOverGameObject())
+            if(DeletionTarget != null && !EventSystem.current.IsPointerOverGameObject())
             {
                 SoundManager.PlaySound(1, DeletionTarget.transform.position);
                 DeletionTarget.GetComponent<BuildingObject>().DeleteBuildingObject();
@@ -322,7 +331,7 @@ public class BuildingManager : MonoBehaviour
                 buildingIndictaor.SetActive(true);
                 print("Building Mode Activated");
                 GameManager.PlayerInputMap.Player.RotateBuilding.performed += ctx => RotateBuilding();
-                GameManager.PlayerInputMap.Player.PlaceBuilding.performed += ctx => PlaceOrRemoveBuilding();
+                GameManager.PlayerInputMap.Player.PlaceBuilding.performed += ctx => placeingButtonRegistered = true;
                 Invoke("UnlockPlacementInput", 0.25f);
                 
             }
@@ -331,7 +340,7 @@ public class BuildingManager : MonoBehaviour
                 //GameUI.instance.interfaceAnimator.SetFloat("Buildingmode", 0);
                 buildingIndictaor.SetActive(false);
                 GameManager.PlayerInputMap.Player.RotateBuilding.performed -= ctx => RotateBuilding();
-                GameManager.PlayerInputMap.Player.PlaceBuilding.performed -= ctx => PlaceOrRemoveBuilding();
+                GameManager.PlayerInputMap.Player.PlaceBuilding.performed -= ctx => placeingButtonRegistered = false;
                 lockPlaceInput = true;
             }
         }

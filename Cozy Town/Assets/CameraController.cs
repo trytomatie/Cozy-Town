@@ -61,8 +61,7 @@ public class CameraController : MonoBehaviour
         EventSystem.current.RaycastAll(pointerData, results);
         if(results.Count > 0)
         {
-            Debug.Log(results[0].gameObject.name);
-            if(results[0].gameObject.GetComponent<UnityEngine.UIElements.ScrollView>() != null)
+            if(results[0].gameObject.GetComponent<ScrollRectScrollable>() != null)
             {
                 return;
             }
