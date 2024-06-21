@@ -10,13 +10,20 @@ public class CameraController : MonoBehaviour
     public AnimationCurve zoom_Fov;
     public float zoomLevel = 0.5f;
 
+    public float rotationSpeed = 180;
+    public float rotationSpeedModifier = 0.5f;
+    public AnimationCurve rotationAcceleration;
+    private float rotationAccelerationTimer;
+
     public LayerMask groundLayer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         transform.parent = null;
-        GameManager.PlayerInputMap.Camera.RotateCamera.started += HandleCameraRotationInput;
-        GameManager.PlayerInputMap.Camera.RotateCamera.canceled += HandleCameraRotationInput;
+        GameManager.PlayerInputMap.Camera.RotateCameraRight.started += ctx => RotateCamera(1);
+        GameManager.PlayerInputMap.Camera.RotateCameraRight.canceled += ctx => RotateCamera(0);
+        GameManager.PlayerInputMap.Camera.RotateCameraLeft.started += ctx => RotateCamera(-1);
+        GameManager.PlayerInputMap.Camera.RotateCameraLeft.canceled += ctx => RotateCamera(0);
         GameManager.PlayerInputMap.Camera.Enable();
     }
 
@@ -26,7 +33,13 @@ public class CameraController : MonoBehaviour
         Movement();
         if (isRotating)
         {
-            transform.Rotate(Vector3.up, GameManager.PlayerInputMap.Camera.MouseMovement.ReadValue<Vector2>().x, Space.World);
+            rotationAccelerationTimer = Mathf.Clamp01(rotationAccelerationTimer+ Time.deltaTime);
+            transform.Rotate(Vector3.up, rotationSpeed * rotationSpeedModifier * Time.deltaTime * rotationAccelerationTimer, Space.World);
+        }
+        else if(rotationAccelerationTimer >0)
+        {
+            rotationAccelerationTimer = Mathf.Clamp01(rotationAccelerationTimer - Time.deltaTime);
+            transform.Rotate(Vector3.up, rotationSpeed * rotationSpeedModifier * Time.deltaTime * rotationAccelerationTimer, Space.World);
         }
         Zoom();
         PlaceOnGround();
@@ -61,9 +74,12 @@ public class CameraController : MonoBehaviour
         EventSystem.current.RaycastAll(pointerData, results);
         if(results.Count > 0)
         {
-            if(results[0].gameObject.GetComponent<ScrollRectScrollable>() != null)
+            foreach(var result in results)
             {
-                return;
+                if(result.gameObject.GetComponent<ScrollRectScrollable>() != null)
+                {
+                    return;
+                }
             }
         }
         zoomLevel -= GameManager.PlayerInputMap.Camera.Zoom.ReadValue<Vector2>().y * 0.05f;
@@ -74,6 +90,7 @@ public class CameraController : MonoBehaviour
 
     private bool isRotating = false;
 
+    // For Mouse Rotation
     public void HandleCameraRotationInput(InputAction.CallbackContext ctx)
     {
         if (ctx.started)
@@ -88,10 +105,19 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    public void RotateCamera(int dir)
+    {
+        isRotating = dir != 0;
+        if(isRotating) rotationSpeedModifier = dir;
+
+    }
+
 
     private void OnDisable()
     {
-        GameManager.PlayerInputMap.Camera.RotateCamera.started -= HandleCameraRotationInput;
-        GameManager.PlayerInputMap.Camera.RotateCamera.canceled -= HandleCameraRotationInput;
+        GameManager.PlayerInputMap.Camera.RotateCameraRight.started -= ctx => RotateCamera(1);
+        GameManager.PlayerInputMap.Camera.RotateCameraRight.canceled -= ctx => RotateCamera(0);
+        GameManager.PlayerInputMap.Camera.RotateCameraLeft.started -= ctx => RotateCamera(-1);
+        GameManager.PlayerInputMap.Camera.RotateCameraLeft.canceled -= ctx => RotateCamera(0);
     }
 }

@@ -1,3 +1,4 @@
+using CrashKonijn.Goap.Interfaces;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
@@ -46,6 +47,10 @@ public class BunnyAI : MonoBehaviour
     public void Equip(int i)
     {
         foreach (var item in leftHandEquipment)
+        {
+            item.SetActive(false);
+        }
+        foreach (var item in rightHandEquipment)
         {
             item.SetActive(false);
         }
@@ -282,6 +287,7 @@ public class HaveFun : State
         agent.fun += 50;
         io.Occupant = null;
         agent.anim.SetInteger("Interaction", 0);
+        agent.Equip(0);
     }
 }
 
@@ -351,6 +357,7 @@ public class RegenerateStamina : State
     }
     public void Exit()
     {
+        agent.Equip(0);
         agent.Agent.enabled = true;
         agent.stamina += 50;
         io.Occupant = null;

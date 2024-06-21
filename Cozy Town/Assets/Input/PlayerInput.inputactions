@@ -24,9 +24,18 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "RotateCamera",
+                    "name": "RotateCameraRight",
                     "type": "Button",
                     "id": "b458ec21-600e-4a63-ae8d-2772330a604a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RotateCameraLeft",
+                    "type": "Button",
+                    "id": "98da4f30-bcf5-43e1-b604-6a0457c8d803",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -165,11 +174,22 @@
                 {
                     "name": "",
                     "id": "cd9727e6-5f43-4473-af48-a3df1e019d34",
-                    "path": "<Mouse>/rightButton",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RotateCamera",
+                    "action": "RotateCameraRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fa44e03d-33c5-41d8-9279-3b9e527cccba",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateCameraLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -218,6 +238,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ExitCurrentMode",
+                    "type": "Button",
+                    "id": "8722ea2d-8a8d-4266-80c5-f1fe4a43af3f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -240,6 +269,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "RotateBuilding",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bd314a19-7d90-40d0-adad-c9acb61bbd41",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ExitCurrentMode",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7e584b1b-a88a-499a-b13a-c2d87f7348af",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ExitCurrentMode",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

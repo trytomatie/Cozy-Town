@@ -63,6 +63,7 @@ public class BuildingManager : MonoBehaviour
         }
         SetBuildingIndicator(0);
 
+
     }
 
     private void FixedUpdate()
@@ -81,6 +82,12 @@ public class BuildingManager : MonoBehaviour
             HoveredTaget = GetHoveredObject();
         }
 
+    }
+
+    private void ExitBuildingMode()
+    {
+        print("HEHEHYHYHYH");
+        PlaceBuildingMode = false;
     }
 
     private void Update()
@@ -332,6 +339,7 @@ public class BuildingManager : MonoBehaviour
                 print("Building Mode Activated");
                 GameManager.PlayerInputMap.Player.RotateBuilding.performed += ctx => RotateBuilding();
                 GameManager.PlayerInputMap.Player.PlaceBuilding.performed += ctx => placeingButtonRegistered = true;
+                GameManager.PlayerInputMap.Player.ExitCurrentMode.performed += ctx => ExitBuildingMode();
                 Invoke("UnlockPlacementInput", 0.25f);
                 
             }
@@ -340,7 +348,8 @@ public class BuildingManager : MonoBehaviour
                 //GameUI.instance.interfaceAnimator.SetFloat("Buildingmode", 0);
                 buildingIndictaor.SetActive(false);
                 GameManager.PlayerInputMap.Player.RotateBuilding.performed -= ctx => RotateBuilding();
-                GameManager.PlayerInputMap.Player.PlaceBuilding.performed -= ctx => placeingButtonRegistered = false;
+                GameManager.PlayerInputMap.Player.PlaceBuilding.performed -= ctx => placeingButtonRegistered = true;
+                GameManager.PlayerInputMap.Player.ExitCurrentMode.performed -= ctx => ExitBuildingMode();
                 lockPlaceInput = true;
             }
         }

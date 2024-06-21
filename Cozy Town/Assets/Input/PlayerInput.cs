@@ -47,9 +47,18 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""RotateCamera"",
+                    ""name"": ""RotateCameraRight"",
                     ""type"": ""Button"",
                     ""id"": ""b458ec21-600e-4a63-ae8d-2772330a604a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RotateCameraLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""98da4f30-bcf5-43e1-b604-6a0457c8d803"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -188,11 +197,22 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""cd9727e6-5f43-4473-af48-a3df1e019d34"",
-                    ""path"": ""<Mouse>/rightButton"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RotateCamera"",
+                    ""action"": ""RotateCameraRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fa44e03d-33c5-41d8-9279-3b9e527cccba"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateCameraLeft"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -241,6 +261,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ExitCurrentMode"",
+                    ""type"": ""Button"",
+                    ""id"": ""8722ea2d-8a8d-4266-80c5-f1fe4a43af3f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -265,6 +294,28 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""RotateBuilding"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bd314a19-7d90-40d0-adad-c9acb61bbd41"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ExitCurrentMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7e584b1b-a88a-499a-b13a-c2d87f7348af"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ExitCurrentMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -275,13 +326,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Camera = asset.FindActionMap("Camera", throwIfNotFound: true);
         m_Camera_Vertical = m_Camera.FindAction("Vertical", throwIfNotFound: true);
         m_Camera_Horizontal = m_Camera.FindAction("Horizontal", throwIfNotFound: true);
-        m_Camera_RotateCamera = m_Camera.FindAction("RotateCamera", throwIfNotFound: true);
+        m_Camera_RotateCameraRight = m_Camera.FindAction("RotateCameraRight", throwIfNotFound: true);
+        m_Camera_RotateCameraLeft = m_Camera.FindAction("RotateCameraLeft", throwIfNotFound: true);
         m_Camera_MouseMovement = m_Camera.FindAction("MouseMovement", throwIfNotFound: true);
         m_Camera_Zoom = m_Camera.FindAction("Zoom", throwIfNotFound: true);
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_PlaceBuilding = m_Player.FindAction("PlaceBuilding", throwIfNotFound: true);
         m_Player_RotateBuilding = m_Player.FindAction("RotateBuilding", throwIfNotFound: true);
+        m_Player_ExitCurrentMode = m_Player.FindAction("ExitCurrentMode", throwIfNotFound: true);
     }
 
     ~@PlayerInput()
@@ -351,7 +404,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private List<ICameraActions> m_CameraActionsCallbackInterfaces = new List<ICameraActions>();
     private readonly InputAction m_Camera_Vertical;
     private readonly InputAction m_Camera_Horizontal;
-    private readonly InputAction m_Camera_RotateCamera;
+    private readonly InputAction m_Camera_RotateCameraRight;
+    private readonly InputAction m_Camera_RotateCameraLeft;
     private readonly InputAction m_Camera_MouseMovement;
     private readonly InputAction m_Camera_Zoom;
     public struct CameraActions
@@ -360,7 +414,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public CameraActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Vertical => m_Wrapper.m_Camera_Vertical;
         public InputAction @Horizontal => m_Wrapper.m_Camera_Horizontal;
-        public InputAction @RotateCamera => m_Wrapper.m_Camera_RotateCamera;
+        public InputAction @RotateCameraRight => m_Wrapper.m_Camera_RotateCameraRight;
+        public InputAction @RotateCameraLeft => m_Wrapper.m_Camera_RotateCameraLeft;
         public InputAction @MouseMovement => m_Wrapper.m_Camera_MouseMovement;
         public InputAction @Zoom => m_Wrapper.m_Camera_Zoom;
         public InputActionMap Get() { return m_Wrapper.m_Camera; }
@@ -378,9 +433,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Horizontal.started += instance.OnHorizontal;
             @Horizontal.performed += instance.OnHorizontal;
             @Horizontal.canceled += instance.OnHorizontal;
-            @RotateCamera.started += instance.OnRotateCamera;
-            @RotateCamera.performed += instance.OnRotateCamera;
-            @RotateCamera.canceled += instance.OnRotateCamera;
+            @RotateCameraRight.started += instance.OnRotateCameraRight;
+            @RotateCameraRight.performed += instance.OnRotateCameraRight;
+            @RotateCameraRight.canceled += instance.OnRotateCameraRight;
+            @RotateCameraLeft.started += instance.OnRotateCameraLeft;
+            @RotateCameraLeft.performed += instance.OnRotateCameraLeft;
+            @RotateCameraLeft.canceled += instance.OnRotateCameraLeft;
             @MouseMovement.started += instance.OnMouseMovement;
             @MouseMovement.performed += instance.OnMouseMovement;
             @MouseMovement.canceled += instance.OnMouseMovement;
@@ -397,9 +455,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Horizontal.started -= instance.OnHorizontal;
             @Horizontal.performed -= instance.OnHorizontal;
             @Horizontal.canceled -= instance.OnHorizontal;
-            @RotateCamera.started -= instance.OnRotateCamera;
-            @RotateCamera.performed -= instance.OnRotateCamera;
-            @RotateCamera.canceled -= instance.OnRotateCamera;
+            @RotateCameraRight.started -= instance.OnRotateCameraRight;
+            @RotateCameraRight.performed -= instance.OnRotateCameraRight;
+            @RotateCameraRight.canceled -= instance.OnRotateCameraRight;
+            @RotateCameraLeft.started -= instance.OnRotateCameraLeft;
+            @RotateCameraLeft.performed -= instance.OnRotateCameraLeft;
+            @RotateCameraLeft.canceled -= instance.OnRotateCameraLeft;
             @MouseMovement.started -= instance.OnMouseMovement;
             @MouseMovement.performed -= instance.OnMouseMovement;
             @MouseMovement.canceled -= instance.OnMouseMovement;
@@ -429,12 +490,14 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_PlaceBuilding;
     private readonly InputAction m_Player_RotateBuilding;
+    private readonly InputAction m_Player_ExitCurrentMode;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
         public PlayerActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @PlaceBuilding => m_Wrapper.m_Player_PlaceBuilding;
         public InputAction @RotateBuilding => m_Wrapper.m_Player_RotateBuilding;
+        public InputAction @ExitCurrentMode => m_Wrapper.m_Player_ExitCurrentMode;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -450,6 +513,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @RotateBuilding.started += instance.OnRotateBuilding;
             @RotateBuilding.performed += instance.OnRotateBuilding;
             @RotateBuilding.canceled += instance.OnRotateBuilding;
+            @ExitCurrentMode.started += instance.OnExitCurrentMode;
+            @ExitCurrentMode.performed += instance.OnExitCurrentMode;
+            @ExitCurrentMode.canceled += instance.OnExitCurrentMode;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -460,6 +526,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @RotateBuilding.started -= instance.OnRotateBuilding;
             @RotateBuilding.performed -= instance.OnRotateBuilding;
             @RotateBuilding.canceled -= instance.OnRotateBuilding;
+            @ExitCurrentMode.started -= instance.OnExitCurrentMode;
+            @ExitCurrentMode.performed -= instance.OnExitCurrentMode;
+            @ExitCurrentMode.canceled -= instance.OnExitCurrentMode;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -481,7 +550,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     {
         void OnVertical(InputAction.CallbackContext context);
         void OnHorizontal(InputAction.CallbackContext context);
-        void OnRotateCamera(InputAction.CallbackContext context);
+        void OnRotateCameraRight(InputAction.CallbackContext context);
+        void OnRotateCameraLeft(InputAction.CallbackContext context);
         void OnMouseMovement(InputAction.CallbackContext context);
         void OnZoom(InputAction.CallbackContext context);
     }
@@ -489,5 +559,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     {
         void OnPlaceBuilding(InputAction.CallbackContext context);
         void OnRotateBuilding(InputAction.CallbackContext context);
+        void OnExitCurrentMode(InputAction.CallbackContext context);
     }
 }
