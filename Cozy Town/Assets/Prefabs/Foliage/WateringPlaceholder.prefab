@@ -46,7 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationType: 5
   equipedItem: 2
+  occupant: {fileID: 0}
   interacting: 0
+  duration: 15
 --- !u!1 &3376994184400250171
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,7 +95,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationType: 6
   equipedItem: 0
+  occupant: {fileID: 0}
   interacting: 0
+  duration: 15
 --- !u!1 &8812955647022973752
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,7 +144,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationType: 7
   equipedItem: 0
+  occupant: {fileID: 0}
   interacting: 0
+  duration: 15
 --- !u!1001 &3904259676114411009
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -265,7 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingType: 2
   gridSize: 0.25
-  sprite: {fileID: 21300000, guid: c7c5e7a0d81509b429711b9f73077ff0, type: 3}
+  sprite: {fileID: 21300000, guid: 2cd02eea724e1694296a6914989a6f73, type: 3}
   components: []
   externalComponents:
   - {fileID: 8134548620862285862}

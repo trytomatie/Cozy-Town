@@ -2038,6 +2038,14 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   zoomLevel: 0.5
+  rotationSpeed: 180
+  rotationSpeedModifier: 0.5
+  rotationAcceleration:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   groundLayer:
     serializedVersion: 2
     m_Bits: 24
@@ -2830,7 +2838,7 @@ GameObject:
   - component: {fileID: 5257966943935993251}
   - component: {fileID: 6760265229423981085}
   m_Layer: 5
-  m_Name: R
+  m_Name: E
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4093,7 +4101,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: R
+  m_text: E
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8b31ecd9f74c1344aab8f0fbc7a978ca, type: 2}
   m_sharedMaterial: {fileID: 2286448364124271058, guid: 8b31ecd9f74c1344aab8f0fbc7a978ca,
