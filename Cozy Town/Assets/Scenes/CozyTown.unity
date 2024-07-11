@@ -945,7 +945,7 @@ Transform:
   m_GameObject: {fileID: 967935660}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.2643433, y: -0.3999939, z: -0.8602295}
+  m_LocalPosition: {x: 1.2643433, y: -0.4, z: -0.8602295}
   m_LocalScale: {x: 20, y: 1, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3150,7 +3150,7 @@ PrefabInstance:
         type: 3}
       propertyPath: 'buildingPrefabs.Array.data[25]'
       value: 
-      objectReference: {fileID: 6333857905284053969, guid: a4c15db05590fd743b925309694ecc17,
+      objectReference: {fileID: 8387660351608513563, guid: 2a7fc096ec584794b9bcf10050f7eedd,
         type: 3}
     - target: {fileID: 7936032996773683361, guid: 19b6dd58a4c0a134d8ba124379e851c3,
         type: 3}
